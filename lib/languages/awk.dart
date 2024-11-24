@@ -4,9 +4,13 @@ import '../src/common_modes.dart';
 import '../src/tools/mode.dart';
 
 final awk = Mode(refs: {}, keywords: {
-  "keyword": "BEGIN END if else while do for in break continue delete next nextfile function func exit|10"
+  "keyword":
+      "BEGIN END if else while do for in break continue delete next nextfile function func exit|10"
 }, contains: [
-  Mode(className: "variable", variants: [Mode(begin: "\\\$[\\w\\d#@][\\w\\d_]*"), Mode(begin: "\\\$\\{(.*?)}")]),
+  Mode(className: "variable", variants: [
+    Mode(begin: "\\\$[\\w\\d#@][\\w\\d_]*"),
+    Mode(begin: "\\\$\\{(.*?)}")
+  ]),
   Mode(className: "string", contains: [
     BACKSLASH_ESCAPE
   ], variants: [

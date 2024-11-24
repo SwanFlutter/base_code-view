@@ -16,9 +16,43 @@ final fortran = Mode(
     },
     illegal: "\\/\\*",
     contains: [
-      Mode(className: "string", begin: "'", end: "'", illegal: "\\n", contains: [BACKSLASH_ESCAPE], relevance: 0),
-      Mode(className: "string", begin: "\"", end: "\"", illegal: "\\n", contains: [BACKSLASH_ESCAPE], relevance: 0),
-      Mode(className: "function", beginKeywords: "subroutine function program", illegal: "[\${=\\n]", contains: [UNDERSCORE_TITLE_MODE, Mode(className: "params", begin: "\\(", end: "\\)")]),
-      Mode(className: "comment", begin: "!", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)], relevance: 0),
-      Mode(className: "number", begin: "(?=\\b|\\+|\\-|\\.)(?=\\.\\d|\\d)(?:\\d+)?(?:\\.?\\d*)(?:[de][+-]?\\d+)?\\b\\.?", relevance: 0)
+      Mode(
+          className: "string",
+          begin: "'",
+          end: "'",
+          illegal: "\\n",
+          contains: [BACKSLASH_ESCAPE],
+          relevance: 0),
+      Mode(
+          className: "string",
+          begin: "\"",
+          end: "\"",
+          illegal: "\\n",
+          contains: [BACKSLASH_ESCAPE],
+          relevance: 0),
+      Mode(
+          className: "function",
+          beginKeywords: "subroutine function program",
+          illegal: "[\${=\\n]",
+          contains: [
+            UNDERSCORE_TITLE_MODE,
+            Mode(className: "params", begin: "\\(", end: "\\)")
+          ]),
+      Mode(
+          className: "comment",
+          begin: "!",
+          end: "\$",
+          contains: [
+            PHRASAL_WORDS_MODE,
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
+          ],
+          relevance: 0),
+      Mode(
+          className: "number",
+          begin:
+              "(?=\\b|\\+|\\-|\\.)(?=\\.\\d|\\d)(?:\\d+)?(?:\\.?\\d*)(?:[de][+-]?\\d+)?\\b\\.?",
+          relevance: 0)
     ]);

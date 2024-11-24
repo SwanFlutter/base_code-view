@@ -14,5 +14,8 @@ final ruleslanguage = Mode(refs: {}, keywords: {
   APOS_STRING_MODE,
   QUOTE_STRING_MODE,
   C_NUMBER_MODE,
-  Mode(className: "literal", variants: [Mode(begin: "#\\s+[a-zA-Z\\ \\.]*", relevance: 0), Mode(begin: "#[a-zA-Z\\ \\.]+")])
+  Mode(className: "literal", variants: [
+    Mode(begin: "#\\s+[a-zA-Z\\ \\.]*", relevance: 0),
+    Mode(begin: "#[a-zA-Z\\ \\.]+")
+  ])
 ]);

@@ -6,12 +6,32 @@ import '../src/tools/mode.dart';
 final julia = Mode(
     refs: {
       '~contains~2~contains~1~contains~8': Mode(begin: "<:"),
-      '~contains~2~contains~1~contains~7': Mode(className: "keyword", begin: "\\b(((abstract|primitive)\\s+)type|(mutable\\s+)?struct)\\b"),
-      '~contains~2~contains~1~contains~5': Mode(className: "comment", variants: [Mode(begin: "#=", end: "=#", relevance: 10), Mode(begin: "#", end: "\$")]),
-      '~contains~2~contains~1~contains~4': Mode(className: "meta", begin: "@[A-Za-z_\\u00A1-\\uFFFF][A-Za-z_0-9\\u00A1-\\uFFFF]*"),
-      '~contains~2~contains~1~contains~3~contains~2': Mode(className: "variable", begin: "\\\$[A-Za-z_\\u00A1-\\uFFFF][A-Za-z_0-9\\u00A1-\\uFFFF]*"),
-      '~contains~2~contains~1~contains~3': Mode(className: "string", contains: [BACKSLASH_ESCAPE, Mode(ref: '~contains~2~contains~1'), Mode(ref: '~contains~2~contains~1~contains~3~contains~2')], begin: "`", end: "`"),
-      '~contains~2~contains~1': Mode(className: "subst", begin: "\\\$\\(", end: "\\)", keywords: {
+      '~contains~2~contains~1~contains~7': Mode(
+          className: "keyword",
+          begin: "\\b(((abstract|primitive)\\s+)type|(mutable\\s+)?struct)\\b"),
+      '~contains~2~contains~1~contains~5': Mode(
+          className: "comment",
+          variants: [
+            Mode(begin: "#=", end: "=#", relevance: 10),
+            Mode(begin: "#", end: "\$")
+          ]),
+      '~contains~2~contains~1~contains~4': Mode(
+          className: "meta",
+          begin: "@[A-Za-z_\\u00A1-\\uFFFF][A-Za-z_0-9\\u00A1-\\uFFFF]*"),
+      '~contains~2~contains~1~contains~3~contains~2': Mode(
+          className: "variable",
+          begin: "\\\$[A-Za-z_\\u00A1-\\uFFFF][A-Za-z_0-9\\u00A1-\\uFFFF]*"),
+      '~contains~2~contains~1~contains~3': Mode(
+          className: "string",
+          contains: [
+            BACKSLASH_ESCAPE,
+            Mode(ref: '~contains~2~contains~1'),
+            Mode(ref: '~contains~2~contains~1~contains~3~contains~2')
+          ],
+          begin: "`",
+          end: "`"),
+      '~contains~2~contains~1':
+          Mode(className: "subst", begin: "\\\$\\(", end: "\\)", keywords: {
         "keyword":
             "in isa where baremodule begin break catch ccall const continue do else elseif end export false finally for function global if import importall let local macro module quote return true try using while type immutable abstract bitstype typealias ",
         "literal":
@@ -29,12 +49,21 @@ final julia = Mode(
         Mode(ref: '~contains~2~contains~1~contains~7'),
         Mode(ref: '~contains~2~contains~1~contains~8')
       ]),
-      '~contains~2': Mode(
-          className: "string",
-          contains: [BACKSLASH_ESCAPE, Mode(ref: '~contains~2~contains~1'), Mode(ref: '~contains~2~contains~1~contains~3~contains~2')],
-          variants: [Mode(begin: "\\w*\"\"\"", end: "\"\"\"\\w*", relevance: 10), Mode(begin: "\\w*\"", end: "\"\\w*")]),
-      '~contains~1': Mode(className: "string", begin: "'(.|\\\\[xXuU][a-zA-Z0-9]+)'"),
-      '~contains~0': Mode(className: "number", begin: "(\\b0x[\\d_]*(\\.[\\d_]*)?|0x\\.\\d[\\d_]*)p[-+]?\\d+|\\b0[box][a-fA-F0-9][a-fA-F0-9_]*|(\\b\\d[\\d_]*(\\.[\\d_]*)?|\\.\\d[\\d_]*)([eEfF][-+]?\\d+)?", relevance: 0),
+      '~contains~2': Mode(className: "string", contains: [
+        BACKSLASH_ESCAPE,
+        Mode(ref: '~contains~2~contains~1'),
+        Mode(ref: '~contains~2~contains~1~contains~3~contains~2')
+      ], variants: [
+        Mode(begin: "\\w*\"\"\"", end: "\"\"\"\\w*", relevance: 10),
+        Mode(begin: "\\w*\"", end: "\"\\w*")
+      ]),
+      '~contains~1':
+          Mode(className: "string", begin: "'(.|\\\\[xXuU][a-zA-Z0-9]+)'"),
+      '~contains~0': Mode(
+          className: "number",
+          begin:
+              "(\\b0x[\\d_]*(\\.[\\d_]*)?|0x\\.\\d[\\d_]*)p[-+]?\\d+|\\b0[box][a-fA-F0-9][a-fA-F0-9_]*|(\\b\\d[\\d_]*(\\.[\\d_]*)?|\\.\\d[\\d_]*)([eEfF][-+]?\\d+)?",
+          relevance: 0),
     },
     lexemes: "[A-Za-z_\\u00A1-\\uFFFF][A-Za-z_0-9\\u00A1-\\uFFFF]*",
     keywords: {

@@ -20,35 +20,100 @@ final qml = Mode(
       Mode(className: "meta", begin: "^\\s*['\"]use (strict|asm)['\"]"),
       APOS_STRING_MODE,
       QUOTE_STRING_MODE,
-      Mode(className: "string", begin: "`", end: "`", contains: [BACKSLASH_ESCAPE, Mode(className: "subst", begin: "\\\$\\{", end: "\\}")]),
+      Mode(className: "string", begin: "`", end: "`", contains: [
+        BACKSLASH_ESCAPE,
+        Mode(className: "subst", begin: "\\\$\\{", end: "\\}")
+      ]),
       C_LINE_COMMENT_MODE,
       C_BLOCK_COMMENT_MODE,
-      Mode(className: "number", variants: [Mode(begin: "\\b(0[bB][01]+)"), Mode(begin: "\\b(0[oO][0-7]+)"), Mode(begin: "(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)")], relevance: 0),
       Mode(
-          begin: "(!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||\\x7e|\\b(case|return|throw)\\b)\\s*",
+          className: "number",
+          variants: [
+            Mode(begin: "\\b(0[bB][01]+)"),
+            Mode(begin: "\\b(0[oO][0-7]+)"),
+            Mode(
+                begin:
+                    "(-?)(\\b0[xX][a-fA-F0-9]+|(\\b\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)")
+          ],
+          relevance: 0),
+      Mode(
+          begin:
+              "(!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||\\x7e|\\b(case|return|throw)\\b)\\s*",
           keywords: "return throw case",
           contains: [
             C_LINE_COMMENT_MODE,
             C_BLOCK_COMMENT_MODE,
             REGEXP_MODE,
-            Mode(begin: "<", end: ">\\s*[);\\]]", relevance: 0, subLanguage: [Languages.xml])
+            Mode(
+                begin: "<",
+                end: ">\\s*[);\\]]",
+                relevance: 0,
+                subLanguage: [Languages.xml])
           ],
           relevance: 0),
-      Mode(className: "keyword", begin: "\\bsignal\\b", starts: Mode(className: "string", end: "(\\(|:|=|;|,|//|/\\*|\$)", returnEnd: true)),
-      Mode(className: "keyword", begin: "\\bproperty\\b", starts: Mode(className: "string", end: "(:|=|;|,|//|/\\*|\$)", returnEnd: true)),
+      Mode(
+          className: "keyword",
+          begin: "\\bsignal\\b",
+          starts: Mode(
+              className: "string",
+              end: "(\\(|:|=|;|,|//|/\\*|\$)",
+              returnEnd: true)),
+      Mode(
+          className: "keyword",
+          begin: "\\bproperty\\b",
+          starts: Mode(
+              className: "string",
+              end: "(:|=|;|,|//|/\\*|\$)",
+              returnEnd: true)),
       Mode(
           className: "function",
           beginKeywords: "function",
           end: "\\{",
           excludeEnd: true,
           contains: [
-            Mode(className: "title", begin: "[A-Za-z\$_][0-9A-Za-z\$_]*", relevance: 0),
-            Mode(className: "params", begin: "\\(", end: "\\)", excludeBegin: true, excludeEnd: true, contains: [C_LINE_COMMENT_MODE, C_BLOCK_COMMENT_MODE])
+            Mode(
+                className: "title",
+                begin: "[A-Za-z\$_][0-9A-Za-z\$_]*",
+                relevance: 0),
+            Mode(
+                className: "params",
+                begin: "\\(",
+                end: "\\)",
+                excludeBegin: true,
+                excludeEnd: true,
+                contains: [C_LINE_COMMENT_MODE, C_BLOCK_COMMENT_MODE])
           ],
           illegal: "\\[|%"),
       Mode(begin: "\\.[a-zA-Z]\\w*", relevance: 0),
-      Mode(className: "attribute", begin: "\\bid\\s*:", starts: Mode(className: "string", end: "[a-zA-Z_][a-zA-Z0-9\\._]*", returnEnd: false)),
-      Mode(begin: "[a-zA-Z_][a-zA-Z0-9\\._]*\\s*:", returnBegin: true, contains: [Mode(className: "attribute", begin: "[a-zA-Z_][a-zA-Z0-9\\._]*", end: "\\s*:", excludeEnd: true, relevance: 0)], relevance: 0),
-      Mode(begin: "[a-zA-Z_][a-zA-Z0-9\\._]*\\s*{", end: "{", returnBegin: true, relevance: 0, contains: [Mode(className: "title", begin: "[a-zA-Z_][a-zA-Z0-9\\._]*", relevance: 0)])
+      Mode(
+          className: "attribute",
+          begin: "\\bid\\s*:",
+          starts: Mode(
+              className: "string",
+              end: "[a-zA-Z_][a-zA-Z0-9\\._]*",
+              returnEnd: false)),
+      Mode(
+          begin: "[a-zA-Z_][a-zA-Z0-9\\._]*\\s*:",
+          returnBegin: true,
+          contains: [
+            Mode(
+                className: "attribute",
+                begin: "[a-zA-Z_][a-zA-Z0-9\\._]*",
+                end: "\\s*:",
+                excludeEnd: true,
+                relevance: 0)
+          ],
+          relevance: 0),
+      Mode(
+          begin: "[a-zA-Z_][a-zA-Z0-9\\._]*\\s*{",
+          end: "{",
+          returnBegin: true,
+          relevance: 0,
+          contains: [
+            Mode(
+                className: "title",
+                begin: "[a-zA-Z_][a-zA-Z0-9\\._]*",
+                relevance: 0)
+          ])
     ],
     illegal: "#");

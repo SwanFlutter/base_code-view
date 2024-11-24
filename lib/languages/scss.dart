@@ -5,8 +5,10 @@ import '../src/tools/mode.dart';
 
 final scss = Mode(
     refs: {
-      '~contains~8': Mode(className: "variable", begin: "(\\\$[a-zA-Z-][a-zA-Z0-9_-]*)\\b"),
-      '~contains~11~contains~1': Mode(className: "number", begin: "#[0-9A-Fa-f]+"),
+      '~contains~8': Mode(
+          className: "variable", begin: "(\\\$[a-zA-Z-][a-zA-Z0-9_-]*)\\b"),
+      '~contains~11~contains~1':
+          Mode(className: "number", begin: "#[0-9A-Fa-f]+"),
     },
     case_insensitive: true,
     illegal: "[=/|']",
@@ -14,7 +16,10 @@ final scss = Mode(
       C_LINE_COMMENT_MODE,
       C_BLOCK_COMMENT_MODE,
       Mode(className: "selector-id", begin: "\\#[A-Za-z0-9_-]+", relevance: 0),
-      Mode(className: "selector-class", begin: "\\.[A-Za-z0-9_-]+", relevance: 0),
+      Mode(
+          className: "selector-class",
+          begin: "\\.[A-Za-z0-9_-]+",
+          relevance: 0),
       Mode(className: "selector-attr", begin: "\\[", end: "\\]", illegal: "\$"),
       Mode(
           className: "selector-tag",
@@ -25,7 +30,10 @@ final scss = Mode(
           className: "selector-pseudo",
           begin:
               ":(visited|valid|root|right|required|read-write|read-only|out-range|optional|only-of-type|only-child|nth-of-type|nth-last-of-type|nth-last-child|nth-child|not|link|left|last-of-type|last-child|lang|invalid|indeterminate|in-range|hover|focus|first-of-type|first-line|first-letter|first-child|first|enabled|empty|disabled|default|checked|before|after|active)"),
-      Mode(className: "selector-pseudo", begin: "::(after|before|choices|first-letter|first-line|repeat-index|repeat-item|selection|value)"),
+      Mode(
+          className: "selector-pseudo",
+          begin:
+              "::(after|before|choices|first-letter|first-line|repeat-index|repeat-item|selection|value)"),
       Mode(ref: '~contains~8'),
       Mode(
           className: "attribute",
@@ -35,12 +43,29 @@ final scss = Mode(
       Mode(
           begin:
               "\\b(whitespace|wait|w-resize|visible|vertical-text|vertical-ideographic|uppercase|upper-roman|upper-alpha|underline|transparent|top|thin|thick|text|text-top|text-bottom|tb-rl|table-header-group|table-footer-group|sw-resize|super|strict|static|square|solid|small-caps|separate|se-resize|scroll|s-resize|rtl|row-resize|ridge|right|repeat|repeat-y|repeat-x|relative|progress|pointer|overline|outside|outset|oblique|nowrap|not-allowed|normal|none|nw-resize|no-repeat|no-drop|newspaper|ne-resize|n-resize|move|middle|medium|ltr|lr-tb|lowercase|lower-roman|lower-alpha|loose|list-item|line|line-through|line-edge|lighter|left|keep-all|justify|italic|inter-word|inter-ideograph|inside|inset|inline|inline-block|inherit|inactive|ideograph-space|ideograph-parenthesis|ideograph-numeric|ideograph-alpha|horizontal|hidden|help|hand|groove|fixed|ellipsis|e-resize|double|dotted|distribute|distribute-space|distribute-letter|distribute-all-lines|disc|disabled|default|decimal|dashed|crosshair|collapse|col-resize|circle|char|center|capitalize|break-word|break-all|bottom|both|bolder|bold|block|bidi-override|below|baseline|auto|always|all-scroll|absolute|table|table-cell)\\b"),
-      Mode(begin: ":", end: ";", contains: [Mode(ref: '~contains~8'), Mode(ref: '~contains~11~contains~1'), CSS_NUMBER_MODE, QUOTE_STRING_MODE, APOS_STRING_MODE, Mode(className: "meta", begin: "!important")]),
-      Mode(begin: "@(page|font-face)", lexemes: "@[a-z-]+", keywords: "@page @font-face"),
+      Mode(begin: ":", end: ";", contains: [
+        Mode(ref: '~contains~8'),
+        Mode(ref: '~contains~11~contains~1'),
+        CSS_NUMBER_MODE,
+        QUOTE_STRING_MODE,
+        APOS_STRING_MODE,
+        Mode(className: "meta", begin: "!important")
+      ]),
+      Mode(
+          begin: "@(page|font-face)",
+          lexemes: "@[a-z-]+",
+          keywords: "@page @font-face"),
       Mode(
           begin: "@",
           end: "[{;]",
           returnBegin: true,
           keywords: "and or not only",
-          contains: [Mode(begin: "@[a-z-]+", className: "keyword"), Mode(ref: '~contains~8'), QUOTE_STRING_MODE, APOS_STRING_MODE, Mode(ref: '~contains~11~contains~1'), CSS_NUMBER_MODE])
+          contains: [
+            Mode(begin: "@[a-z-]+", className: "keyword"),
+            Mode(ref: '~contains~8'),
+            QUOTE_STRING_MODE,
+            APOS_STRING_MODE,
+            Mode(ref: '~contains~11~contains~1'),
+            CSS_NUMBER_MODE
+          ])
     ]);

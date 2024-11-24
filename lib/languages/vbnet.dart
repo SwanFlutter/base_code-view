@@ -16,18 +16,35 @@ final vbnet = Mode(
     },
     illegal: "//|{|}|endif|gosub|variant|wend|^\\\$ ",
     contains: [
-      Mode(className: "string", begin: "\"", end: "\"", illegal: "\\n", contains: [Mode(begin: "\"\"")]),
+      Mode(
+          className: "string",
+          begin: "\"",
+          end: "\"",
+          illegal: "\\n",
+          contains: [Mode(begin: "\"\"")]),
       Mode(
           className: "comment",
           begin: "'",
           end: "\$",
           contains: [
-            Mode(className: "doctag", begin: "'''|<!--|-->", contains: [PHRASAL_WORDS_MODE]),
-            Mode(className: "doctag", begin: "</?", end: ">", contains: [PHRASAL_WORDS_MODE]),
+            Mode(
+                className: "doctag",
+                begin: "'''|<!--|-->",
+                contains: [PHRASAL_WORDS_MODE]),
+            Mode(
+                className: "doctag",
+                begin: "</?",
+                end: ">",
+                contains: [PHRASAL_WORDS_MODE]),
             PHRASAL_WORDS_MODE,
-            Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
           ],
           returnBegin: true),
       C_NUMBER_MODE,
-      Mode(className: "meta", begin: "#", end: "\$", keywords: {"meta-keyword": "if else elseif end region externalsource"})
+      Mode(className: "meta", begin: "#", end: "\$", keywords: {
+        "meta-keyword": "if else elseif end region externalsource"
+      })
     ]);

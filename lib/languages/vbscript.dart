@@ -16,7 +16,23 @@ final vbscript = Mode(
     },
     illegal: "//",
     contains: [
-      Mode(className: "string", begin: "\"", end: "\"", illegal: "\\n", contains: [Mode(begin: "\"\"")]),
-      Mode(className: "comment", begin: "'", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)], relevance: 0),
+      Mode(
+          className: "string",
+          begin: "\"",
+          end: "\"",
+          illegal: "\\n",
+          contains: [Mode(begin: "\"\"")]),
+      Mode(
+          className: "comment",
+          begin: "'",
+          end: "\$",
+          contains: [
+            PHRASAL_WORDS_MODE,
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
+          ],
+          relevance: 0),
       C_NUMBER_MODE
     ]);

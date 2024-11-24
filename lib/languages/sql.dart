@@ -5,7 +5,14 @@ import '../src/tools/mode.dart';
 
 final sql = Mode(
     refs: {
-      '~contains~0~contains~5': Mode(className: "comment", begin: "--", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)]),
+      '~contains~0~contains~5':
+          Mode(className: "comment", begin: "--", end: "\$", contains: [
+        PHRASAL_WORDS_MODE,
+        Mode(
+            className: "doctag",
+            begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+            relevance: 0)
+      ]),
     },
     case_insensitive: true,
     illegal: "[<>{}*]",
@@ -24,8 +31,16 @@ final sql = Mode(
                 "array bigint binary bit blob bool boolean char character date dec decimal float int int8 integer interval number numeric real record serial serial8 smallint text time timestamp tinyint varchar varchar2 varying void"
           },
           contains: [
-            Mode(className: "string", begin: "'", end: "'", contains: [Mode(begin: "''")]),
-            Mode(className: "string", begin: "\"", end: "\"", contains: [Mode(begin: "\"\"")]),
+            Mode(
+                className: "string",
+                begin: "'",
+                end: "'",
+                contains: [Mode(begin: "''")]),
+            Mode(
+                className: "string",
+                begin: "\"",
+                end: "\"",
+                contains: [Mode(begin: "\"\"")]),
             Mode(className: "string", begin: "`", end: "`"),
             C_NUMBER_MODE,
             C_BLOCK_COMMENT_MODE,

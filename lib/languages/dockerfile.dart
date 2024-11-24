@@ -4,7 +4,6 @@ import '../src/tools/mode.dart';
 import '../src/common_modes.dart';
 import 'language/languages.dart';
 
-
 final dockerfile = Mode(
     refs: {},
     aliases: ["docker"],
@@ -21,6 +20,3 @@ final dockerfile = Mode(
           starts: Mode(end: "[^\\\\]\$", subLanguage: [Languages.bash])),
     ],
     illegal: "</");
-
-
-

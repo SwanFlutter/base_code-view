@@ -14,13 +14,33 @@ final hsp = Mode(
       C_BLOCK_COMMENT_MODE,
       QUOTE_STRING_MODE,
       APOS_STRING_MODE,
-      Mode(className: "string", begin: "{\"", end: "\"}", contains: [BACKSLASH_ESCAPE]),
-      Mode(className: "comment", begin: ";", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)], relevance: 0),
+      Mode(
+          className: "string",
+          begin: "{\"",
+          end: "\"}",
+          contains: [BACKSLASH_ESCAPE]),
+      Mode(
+          className: "comment",
+          begin: ";",
+          end: "\$",
+          contains: [
+            PHRASAL_WORDS_MODE,
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
+          ],
+          relevance: 0),
       Mode(className: "meta", begin: "#", end: "\$", keywords: {
         "meta-keyword":
             "addion cfunc cmd cmpopt comfunc const defcfunc deffunc define else endif enum epack func global if ifdef ifndef include modcfunc modfunc modinit modterm module pack packopt regcmd runtime undef usecom uselib"
       }, contains: [
-        Mode(className: "meta-string", begin: "\"", end: "\"", illegal: "\\n", contains: [BACKSLASH_ESCAPE]),
+        Mode(
+            className: "meta-string",
+            begin: "\"",
+            end: "\"",
+            illegal: "\\n",
+            contains: [BACKSLASH_ESCAPE]),
         NUMBER_MODE,
         C_NUMBER_MODE,
         C_LINE_COMMENT_MODE,

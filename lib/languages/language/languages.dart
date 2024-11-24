@@ -1,4 +1,3 @@
-
 /// Enum `Languages`
 ///
 /// This `enum` contains the different programming languages ​​that you can use in your package.

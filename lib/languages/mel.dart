@@ -12,7 +12,11 @@ final mel = Mode(
       C_NUMBER_MODE,
       APOS_STRING_MODE,
       QUOTE_STRING_MODE,
-      Mode(className: "string", begin: "`", end: "`", contains: [BACKSLASH_ESCAPE]),
+      Mode(
+          className: "string",
+          begin: "`",
+          end: "`",
+          contains: [BACKSLASH_ESCAPE]),
       Mode(begin: "[\\\$\\%\\@](\\^\\w\\b|#\\w+|[^\\s\\w{]|{\\w+}|\\w+)"),
       C_LINE_COMMENT_MODE,
       C_BLOCK_COMMENT_MODE

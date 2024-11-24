@@ -7,19 +7,43 @@ import '../src/tools/mode.dart';
 
 final perl = Mode(
     refs: {
-      '~contains~3~contains~4~contains~1~contains~9': Mode(begin: "^__DATA__\$", end: "^__END__\$", subLanguage: [Languages.mojolicious], contains: [Mode(begin: "^@@.*", end: "\$", className: "comment")]),
-      '~contains~3~contains~4~contains~1~contains~8': Mode(begin: "-\\w\\b", relevance: 0),
-      '~contains~3~contains~4~contains~1~contains~7': Mode(className: "function", beginKeywords: "sub", end: "(\\s*\\(.*?\\))?[;{]", excludeEnd: true, relevance: 5, contains: [TITLE_MODE]),
+      '~contains~3~contains~4~contains~1~contains~9': Mode(
+          begin: "^__DATA__\$",
+          end: "^__END__\$",
+          subLanguage: [Languages.mojolicious],
+          contains: [Mode(begin: "^@@.*", end: "\$", className: "comment")]),
+      '~contains~3~contains~4~contains~1~contains~8':
+          Mode(begin: "-\\w\\b", relevance: 0),
+      '~contains~3~contains~4~contains~1~contains~7': Mode(
+          className: "function",
+          beginKeywords: "sub",
+          end: "(\\s*\\(.*?\\))?[;{]",
+          excludeEnd: true,
+          relevance: 5,
+          contains: [TITLE_MODE]),
       '~contains~3~contains~4~contains~1~contains~6': Mode(
-          begin: "(\\/\\/|!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||\\x7e|\\b(split|return|print|reverse|grep)\\b)\\s*",
+          begin:
+              "(\\/\\/|!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|-|-=|/=|/|:|;|<<|<<=|<=|<|===|==|=|>>>=|>>=|>=|>>>|>>|>|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||\\x7e|\\b(split|return|print|reverse|grep)\\b)\\s*",
           keywords: "split return print reverse grep",
           relevance: 0,
           contains: [
             HASH_COMMENT_MODE,
-            Mode(className: "regexp", begin: "(s|tr|y)/(\\\\.|[^/])*/(\\\\.|[^/])*/[a-z]*", relevance: 10),
-            Mode(className: "regexp", begin: "(m|qr)?/", end: "/[a-z]*", contains: [BACKSLASH_ESCAPE], relevance: 0)
+            Mode(
+                className: "regexp",
+                begin: "(s|tr|y)/(\\\\.|[^/])*/(\\\\.|[^/])*/[a-z]*",
+                relevance: 10),
+            Mode(
+                className: "regexp",
+                begin: "(m|qr)?/",
+                end: "/[a-z]*",
+                contains: [BACKSLASH_ESCAPE],
+                relevance: 0)
           ]),
-      '~contains~3~contains~4~contains~1~contains~5': Mode(className: "number", begin: "(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b", relevance: 0),
+      '~contains~3~contains~4~contains~1~contains~5': Mode(
+          className: "number",
+          begin:
+              "(\\b0[0-7_]+)|(\\b0x[0-9a-fA-F_]+)|(\\b[1-9][0-9_]*(\\.[0-9_]+)?)|[0_]\\b",
+          relevance: 0),
       '~contains~3~contains~4': Mode(className: "string", contains: [
         BACKSLASH_ESCAPE,
         Mode(
@@ -66,8 +90,23 @@ final perl = Mode(
         Mode(ref: '~contains~3~contains~4~contains~1~contains~8'),
         Mode(ref: '~contains~3~contains~4~contains~1~contains~9')
       ]),
-      '~contains~2': Mode(className: "comment", begin: "^\\=\\w", end: "\\=cut", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)], endsWithParent: true),
-      '~contains~0': Mode(variants: [Mode(begin: "\\\$\\d"), Mode(begin: "[\\\$%@](\\^\\w\\b|#\\w+(::\\w+)*|{\\w+}|\\w+(::\\w*)*)"), Mode(begin: "[\\\$%@][^\\s\\w{]", relevance: 0)]),
+      '~contains~2': Mode(
+          className: "comment",
+          begin: "^\\=\\w",
+          end: "\\=cut",
+          contains: [
+            PHRASAL_WORDS_MODE,
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
+          ],
+          endsWithParent: true),
+      '~contains~0': Mode(variants: [
+        Mode(begin: "\\\$\\d"),
+        Mode(begin: "[\\\$%@](\\^\\w\\b|#\\w+(::\\w+)*|{\\w+}|\\w+(::\\w*)*)"),
+        Mode(begin: "[\\\$%@][^\\s\\w{]", relevance: 0)
+      ]),
     },
     aliases: ["pl", "pm"],
     lexemes: "[\\w\\.]+",

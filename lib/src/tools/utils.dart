@@ -20,4 +20,3 @@ String substring(String input, int startIndex, [int? endIndex]) {
 
   return input.substring(startIndex, endIndex);
 }
-

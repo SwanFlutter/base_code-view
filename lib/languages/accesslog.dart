@@ -3,7 +3,10 @@
 import '../src/tools/mode.dart';
 
 final accesslog = Mode(refs: {}, contains: [
-  Mode(className: "number", begin: "^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(:\\d{1,5})?\\b", relevance: 5),
+  Mode(
+      className: "number",
+      begin: "^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(:\\d{1,5})?\\b",
+      relevance: 5),
   Mode(className: "number", begin: "\\b\\d+\\b", relevance: 0),
   Mode(
       className: "string",
@@ -13,8 +16,23 @@ final accesslog = Mode(refs: {}, contains: [
       illegal: "\\n",
       relevance: 5,
       contains: [Mode(begin: "HTTP/[12]\\.\\d", relevance: 5)]),
-  Mode(className: "string", begin: "\\[\\d[^\\]\\n]{8,}\\]", illegal: "\\n", relevance: 1),
-  Mode(className: "string", begin: "\\[", end: "\\]", illegal: "\\n", relevance: 0),
-  Mode(className: "string", begin: "\"Mozilla/\\d\\.\\d \\(", end: "\"", illegal: "\\n", relevance: 3),
-  Mode(className: "string", begin: "\"", end: "\"", illegal: "\\n", relevance: 0)
+  Mode(
+      className: "string",
+      begin: "\\[\\d[^\\]\\n]{8,}\\]",
+      illegal: "\\n",
+      relevance: 1),
+  Mode(
+      className: "string",
+      begin: "\\[",
+      end: "\\]",
+      illegal: "\\n",
+      relevance: 0),
+  Mode(
+      className: "string",
+      begin: "\"Mozilla/\\d\\.\\d \\(",
+      end: "\"",
+      illegal: "\\n",
+      relevance: 3),
+  Mode(
+      className: "string", begin: "\"", end: "\"", illegal: "\\n", relevance: 0)
 ]);

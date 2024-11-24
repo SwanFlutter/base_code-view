@@ -5,7 +5,8 @@ import '../src/tools/mode.dart';
 
 final flix = Mode(refs: {}, keywords: {
   "literal": "true false",
-  "keyword": "case class def else enum if impl import in lat rel index let match namespace switch type yield with"
+  "keyword":
+      "case class def else enum if impl import in lat rel index let match namespace switch type yield with"
 }, contains: [
   C_LINE_COMMENT_MODE,
   C_BLOCK_COMMENT_MODE,
@@ -16,6 +17,11 @@ final flix = Mode(refs: {}, keywords: {
       beginKeywords: "def",
       end: "[:={\\[(\\n;]",
       excludeEnd: true,
-      contains: [Mode(className: "title", begin: "[^0-9\\n\\t \"'(),.`{}\\[\\]:;][^\\n\\t \"'(),.`{}\\[\\]:;]+|[^0-9\\n\\t \"'(),.`{}\\[\\]:;=]")]),
+      contains: [
+        Mode(
+            className: "title",
+            begin:
+                "[^0-9\\n\\t \"'(),.`{}\\[\\]:;][^\\n\\t \"'(),.`{}\\[\\]:;]+|[^0-9\\n\\t \"'(),.`{}\\[\\]:;=]")
+      ]),
   C_NUMBER_MODE
 ]);

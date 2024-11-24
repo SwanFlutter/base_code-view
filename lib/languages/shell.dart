@@ -7,5 +7,8 @@ import '../src/tools/mode.dart';
 final shell = Mode(refs: {}, aliases: [
   "console"
 ], contains: [
-  Mode(className: "meta", begin: "^\\s{0,3}[/\\w\\d\\[\\]()@-]*[>%\$#]", starts: Mode(end: "\$", subLanguage: [Languages.bash]))
+  Mode(
+      className: "meta",
+      begin: "^\\s{0,3}[/\\w\\d\\[\\]()@-]*[>%\$#]",
+      starts: Mode(end: "\$", subLanguage: [Languages.bash]))
 ]);

@@ -15,4 +15,9 @@ final glsl = Mode(
       "literal": "true false"
     },
     illegal: "\"",
-    contains: [C_LINE_COMMENT_MODE, C_BLOCK_COMMENT_MODE, C_NUMBER_MODE, Mode(className: "meta", begin: "#", end: "\$")]);
+    contains: [
+      C_LINE_COMMENT_MODE,
+      C_BLOCK_COMMENT_MODE,
+      C_NUMBER_MODE,
+      Mode(className: "meta", begin: "#", end: "\$")
+    ]);

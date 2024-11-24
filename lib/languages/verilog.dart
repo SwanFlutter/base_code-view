@@ -19,11 +19,17 @@ final verilog = Mode(
       C_BLOCK_COMMENT_MODE,
       C_LINE_COMMENT_MODE,
       QUOTE_STRING_MODE,
-      Mode(
-          className: "number",
-          contains: [BACKSLASH_ESCAPE],
-          variants: [Mode(begin: "\\b((\\d+'(b|h|o|d|B|H|O|D))[0-9xzXZa-fA-F_]+)"), Mode(begin: "\\B(('(b|h|o|d|B|H|O|D))[0-9xzXZa-fA-F_]+)"), Mode(begin: "\\b([0-9_])+", relevance: 0)]),
-      Mode(className: "variable", variants: [Mode(begin: "#\\((?!parameter).+\\)"), Mode(begin: "\\.\\w+", relevance: 0)]),
+      Mode(className: "number", contains: [
+        BACKSLASH_ESCAPE
+      ], variants: [
+        Mode(begin: "\\b((\\d+'(b|h|o|d|B|H|O|D))[0-9xzXZa-fA-F_]+)"),
+        Mode(begin: "\\B(('(b|h|o|d|B|H|O|D))[0-9xzXZa-fA-F_]+)"),
+        Mode(begin: "\\b([0-9_])+", relevance: 0)
+      ]),
+      Mode(className: "variable", variants: [
+        Mode(begin: "#\\((?!parameter).+\\)"),
+        Mode(begin: "\\.\\w+", relevance: 0)
+      ]),
       Mode(
           className: "meta",
           begin: "`",

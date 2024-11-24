@@ -23,7 +23,11 @@ final jbossCli = Mode(
           begin: "\\(",
           end: "\\)",
           contains: [
-            Mode(begin: "[\\w-]+ *=", returnBegin: true, relevance: 0, contains: [Mode(className: "attr", begin: "[\\w-]+")])
+            Mode(
+                begin: "[\\w-]+ *=",
+                returnBegin: true,
+                relevance: 0,
+                contains: [Mode(className: "attr", begin: "[\\w-]+")])
           ],
           relevance: 0)
     ]);

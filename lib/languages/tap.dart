@@ -10,8 +10,17 @@ final tap = Mode(
     case_insensitive: true,
     contains: [
       HASH_COMMENT_MODE,
-      Mode(className: "meta", variants: [Mode(begin: "^TAP version (\\d+)\$"), Mode(begin: "^1\\.\\.(\\d+)\$")]),
-      Mode(begin: "(s+)?---\$", end: "\\.\\.\\.\$", subLanguage: [Languages.yaml], relevance: 0),
+      Mode(className: "meta", variants: [
+        Mode(begin: "^TAP version (\\d+)\$"),
+        Mode(begin: "^1\\.\\.(\\d+)\$")
+      ]),
+      Mode(
+          begin: "(s+)?---\$",
+          end: "\\.\\.\\.\$",
+          subLanguage: [Languages.yaml],
+          relevance: 0),
       Mode(className: "number", begin: " (\\d+) "),
-      Mode(className: "symbol", variants: [Mode(begin: "^ok"), Mode(begin: "^not ok")])
+      Mode(
+          className: "symbol",
+          variants: [Mode(begin: "^ok"), Mode(begin: "^not ok")])
     ]);

@@ -6,11 +6,19 @@ import '../src/tools/mode.dart';
 final routeros = Mode(
     refs: {
       '~contains~3': Mode(className: "string", begin: "'", end: "'"),
-      '~contains~2~contains~1': Mode(className: "variable", variants: [Mode(begin: "\\\$[\\w\\d#@][\\w\\d_]*"), Mode(begin: "\\\$\\{(.*?)}")]),
-      '~contains~2': Mode(className: "string", begin: "\"", end: "\"", contains: [
+      '~contains~2~contains~1': Mode(className: "variable", variants: [
+        Mode(begin: "\\\$[\\w\\d#@][\\w\\d_]*"),
+        Mode(begin: "\\\$\\{(.*?)}")
+      ]),
+      '~contains~2':
+          Mode(className: "string", begin: "\"", end: "\"", contains: [
         BACKSLASH_ESCAPE,
         Mode(ref: '~contains~2~contains~1'),
-        Mode(className: "variable", begin: "\\\$\\(", end: "\\)", contains: [BACKSLASH_ESCAPE])
+        Mode(
+            className: "variable",
+            begin: "\\\$\\(",
+            end: "\\)",
+            contains: [BACKSLASH_ESCAPE])
       ]),
     },
     aliases: ["routeros", "mikrotik"],
@@ -34,22 +42,38 @@ final routeros = Mode(
         Mode(begin: "^facet ", end: "\\}"),
         Mode(begin: "^1\\.\\.(\\d+)\$", end: "\$")
       ], illegal: "."),
-      Mode(className: "comment", begin: "^#", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)]),
+      Mode(className: "comment", begin: "^#", end: "\$", contains: [
+        PHRASAL_WORDS_MODE,
+        Mode(
+            className: "doctag",
+            begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+            relevance: 0)
+      ]),
       Mode(ref: '~contains~2'),
       Mode(ref: '~contains~3'),
       Mode(ref: '~contains~2~contains~1'),
-      Mode(begin: "[\\w-]+\\=([^\\s\\{\\}\\[\\]\\(\\)]+)", relevance: 0, returnBegin: true, contains: [
-        Mode(className: "attribute", begin: "[^=]+"),
-        Mode(begin: "=", endsWithParent: true, relevance: 0, contains: [
-          Mode(ref: '~contains~2'),
-          Mode(ref: '~contains~3'),
-          Mode(ref: '~contains~2~contains~1'),
-          Mode(className: "literal", begin: "\\b(true|false|yes|no|nothing|nil|null)\\b"),
-          Mode(begin: "(\"[^\"]*\"|[^\\s\\{\\}\\[\\]]+)")
-        ])
-      ]),
+      Mode(
+          begin: "[\\w-]+\\=([^\\s\\{\\}\\[\\]\\(\\)]+)",
+          relevance: 0,
+          returnBegin: true,
+          contains: [
+            Mode(className: "attribute", begin: "[^=]+"),
+            Mode(begin: "=", endsWithParent: true, relevance: 0, contains: [
+              Mode(ref: '~contains~2'),
+              Mode(ref: '~contains~3'),
+              Mode(ref: '~contains~2~contains~1'),
+              Mode(
+                  className: "literal",
+                  begin: "\\b(true|false|yes|no|nothing|nil|null)\\b"),
+              Mode(begin: "(\"[^\"]*\"|[^\\s\\{\\}\\[\\]]+)")
+            ])
+          ]),
       Mode(className: "number", begin: "\\*[0-9a-fA-F]+"),
-      Mode(begin: "\\b(add|remove|enable|disable|set|get|print|export|edit|find|run|debug|error|info|warning)([\\s[(]|])", returnBegin: true, contains: [Mode(className: "builtin-name", begin: "\\w+")]),
+      Mode(
+          begin:
+              "\\b(add|remove|enable|disable|set|get|print|export|edit|find|run|debug|error|info|warning)([\\s[(]|])",
+          returnBegin: true,
+          contains: [Mode(className: "builtin-name", begin: "\\w+")]),
       Mode(className: "built_in", variants: [
         Mode(
             begin:

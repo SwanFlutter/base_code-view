@@ -7,7 +7,8 @@ final stan = Mode(
     refs: {},
     aliases: ["stanfuncs"],
     keywords: {
-      "title": "functions model data parameters quantities transformed generated",
+      "title":
+          "functions model data parameters quantities transformed generated",
       "keyword":
           "for in if else while break continue return int real vector ordered positive_ordered simplex unit_vector row_vector matrix cholesky_factor_corr|10 cholesky_factor_cov|10 corr_matrix|10 cov_matrix|10 void print reject increment_log_prob|10 integrate_ode|10 integrate_ode_rk45|10 integrate_ode_bdf|10 algebra_solver",
       "built_in":
@@ -17,12 +18,30 @@ final stan = Mode(
     contains: [
       C_LINE_COMMENT_MODE,
       Mode(
-          className: "comment", begin: "#", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)], relevance: 0, keywords: {"meta-keyword": "include"}),
+          className: "comment",
+          begin: "#",
+          end: "\$",
+          contains: [
+            PHRASAL_WORDS_MODE,
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
+          ],
+          relevance: 0,
+          keywords: {"meta-keyword": "include"}),
       Mode(
           className: "comment",
           begin: "\\/\\*",
           end: "\\*\\/",
-          contains: [Mode(className: "doctag", begin: "@(return|param)"), PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)],
+          contains: [
+            Mode(className: "doctag", begin: "@(return|param)"),
+            PHRASAL_WORDS_MODE,
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
+          ],
           relevance: 0),
       Mode(begin: "<\\s*lower\\s*=", keywords: "lower"),
       Mode(begin: "[<,]*upper\\s*=", keywords: "upper"),
@@ -31,6 +50,12 @@ final stan = Mode(
           begin: "\\x7e\\s*([a-zA-Z]\\w*)\\s*\\(",
           keywords:
               "bernoulli bernoulli_logit beta beta_binomial binomial binomial_logit categorical categorical_logit cauchy chi_square dirichlet double_exponential exp_mod_normal exponential frechet gamma gaussian_dlm_obs gumbel hypergeometric inv_chi_square inv_gamma inv_wishart lkj_corr lkj_corr_cholesky logistic lognormal multi_gp multi_gp_cholesky multi_normal multi_normal_cholesky multi_normal_prec multi_student_t multinomial neg_binomial neg_binomial_2 neg_binomial_2_log normal ordered_logistic pareto pareto_type_2 poisson poisson_log rayleigh scaled_inv_chi_square skew_normal student_t uniform von_mises weibull wiener wishart"),
-      Mode(className: "number", variants: [Mode(begin: "\\b\\d+(?:\\.\\d*)?(?:[eE][+-]?\\d+)?"), Mode(begin: "\\.\\d+(?:[eE][+-]?\\d+)?\\b")], relevance: 0),
+      Mode(
+          className: "number",
+          variants: [
+            Mode(begin: "\\b\\d+(?:\\.\\d*)?(?:[eE][+-]?\\d+)?"),
+            Mode(begin: "\\.\\d+(?:[eE][+-]?\\d+)?\\b")
+          ],
+          relevance: 0),
       Mode(className: "string", begin: "\"", end: "\"", relevance: 0)
     ]);

@@ -5,7 +5,10 @@ import '../src/tools/mode.dart';
 
 final bash = Mode(
     refs: {
-      '~contains~3~contains~1': Mode(className: "variable", variants: [Mode(begin: "\\\$[\\w\\d#@][\\w\\d_]*"), Mode(begin: "\\\$\\{(.*?)}")]),
+      '~contains~3~contains~1': Mode(className: "variable", variants: [
+        Mode(begin: "\\\$[\\w\\d#@][\\w\\d_]*"),
+        Mode(begin: "\\\$\\{(.*?)}")
+      ]),
     },
     aliases: ["sh", "zsh"],
     lexemes: "\\b-?[a-z\\._]+\\b",
@@ -18,12 +21,23 @@ final bash = Mode(
     },
     contains: [
       Mode(className: "meta", begin: "^#![^\\n]+sh\\s*\$", relevance: 10),
-      Mode(className: "function", begin: "\\w[\\w\\d_]*\\s*\\(\\s*\\)\\s*\\{", returnBegin: true, contains: [Mode(className: "title", begin: "\\w[\\w\\d_]*", relevance: 0)], relevance: 0),
+      Mode(
+          className: "function",
+          begin: "\\w[\\w\\d_]*\\s*\\(\\s*\\)\\s*\\{",
+          returnBegin: true,
+          contains: [
+            Mode(className: "title", begin: "\\w[\\w\\d_]*", relevance: 0)
+          ],
+          relevance: 0),
       HASH_COMMENT_MODE,
       Mode(className: "string", begin: "\"", end: "\"", contains: [
         BACKSLASH_ESCAPE,
         Mode(ref: '~contains~3~contains~1'),
-        Mode(className: "variable", begin: "\\\$\\(", end: "\\)", contains: [BACKSLASH_ESCAPE])
+        Mode(
+            className: "variable",
+            begin: "\\\$\\(",
+            end: "\\)",
+            contains: [BACKSLASH_ESCAPE])
       ]),
       Mode(className: "", begin: "\\\\\""),
       Mode(className: "string", begin: "'", end: "'"),

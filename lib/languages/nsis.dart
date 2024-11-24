@@ -5,9 +5,12 @@ import '../src/tools/mode.dart';
 
 final nsis = Mode(
     refs: {
-      '~contains~4~contains~4': Mode(className: "variable", begin: "\\\$+\\([\\w\\^\\.:-]+\\)"),
-      '~contains~4~contains~3': Mode(className: "variable", begin: "\\\$+\\w+", illegal: "\\(\\){}"),
-      '~contains~4~contains~2': Mode(className: "variable", begin: "\\\$+{[\\w\\.:-]+}"),
+      '~contains~4~contains~4':
+          Mode(className: "variable", begin: "\\\$+\\([\\w\\^\\.:-]+\\)"),
+      '~contains~4~contains~3':
+          Mode(className: "variable", begin: "\\\$+\\w+", illegal: "\\(\\){}"),
+      '~contains~4~contains~2':
+          Mode(className: "variable", begin: "\\\$+{[\\w\\.:-]+}"),
     },
     case_insensitive: false,
     keywords: {
@@ -19,11 +22,29 @@ final nsis = Mode(
     contains: [
       HASH_COMMENT_MODE,
       C_BLOCK_COMMENT_MODE,
-      Mode(className: "comment", begin: ";", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)], relevance: 0),
-      Mode(className: "function", beginKeywords: "Function PageEx Section SectionGroup", end: "\$"),
+      Mode(
+          className: "comment",
+          begin: ";",
+          end: "\$",
+          contains: [
+            PHRASAL_WORDS_MODE,
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
+          ],
+          relevance: 0),
+      Mode(
+          className: "function",
+          beginKeywords: "Function PageEx Section SectionGroup",
+          end: "\$"),
       Mode(
           className: "string",
-          variants: [Mode(begin: "\"", end: "\""), Mode(begin: "'", end: "'"), Mode(begin: "`", end: "`")],
+          variants: [
+            Mode(begin: "\"", end: "\""),
+            Mode(begin: "'", end: "'"),
+            Mode(begin: "`", end: "`")
+          ],
           illegal: "\\n",
           contains: [
             Mode(className: "meta", begin: "\\\$(\\\\[nrt]|\\\$)"),

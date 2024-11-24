@@ -5,9 +5,23 @@ import '../src/tools/mode.dart';
 
 final livecodeserver = Mode(
     refs: {
-      '~contains~2~contains~6': Mode(className: "title", begin: "[a-zA-Z]\\w*", relevance: 0, variants: [Mode(begin: "\\b_*rig[A-Z]+[A-Za-z0-9_\\-]*"), Mode(begin: "\\b_[a-z0-9\\-]+")]),
-      '~contains~2~contains~1': Mode(className: "title", begin: "\\b([A-Za-z0-9_\\-]+)\\b", relevance: 0),
-      '~contains~0': Mode(className: "variable", variants: [Mode(begin: "\\b([gtps][A-Z]{1}[a-zA-Z0-9]*)(\\[.+\\])?(?:\\s*?)"), Mode(begin: "\\\$_[A-Z]+")], relevance: 0),
+      '~contains~2~contains~6': Mode(
+          className: "title",
+          begin: "[a-zA-Z]\\w*",
+          relevance: 0,
+          variants: [
+            Mode(begin: "\\b_*rig[A-Z]+[A-Za-z0-9_\\-]*"),
+            Mode(begin: "\\b_[a-z0-9\\-]+")
+          ]),
+      '~contains~2~contains~1': Mode(
+          className: "title", begin: "\\b([A-Za-z0-9_\\-]+)\\b", relevance: 0),
+      '~contains~0': Mode(
+          className: "variable",
+          variants: [
+            Mode(begin: "\\b([gtps][A-Z]{1}[a-zA-Z0-9]*)(\\[.+\\])?(?:\\s*?)"),
+            Mode(begin: "\\\$_[A-Z]+")
+          ],
+          relevance: 0),
     },
     case_insensitive: false,
     keywords: {
@@ -25,13 +39,39 @@ final livecodeserver = Mode(
           className: "function",
           beginKeywords: "function",
           end: "\$",
-          contains: [Mode(ref: '~contains~0'), Mode(ref: '~contains~2~contains~1'), APOS_STRING_MODE, QUOTE_STRING_MODE, BINARY_NUMBER_MODE, C_NUMBER_MODE, Mode(ref: '~contains~2~contains~6')]),
-      Mode(className: "function", begin: "\\bend\\s+", end: "\$", keywords: "end", contains: [Mode(ref: '~contains~2~contains~1'), Mode(ref: '~contains~2~contains~6')], relevance: 0),
+          contains: [
+            Mode(ref: '~contains~0'),
+            Mode(ref: '~contains~2~contains~1'),
+            APOS_STRING_MODE,
+            QUOTE_STRING_MODE,
+            BINARY_NUMBER_MODE,
+            C_NUMBER_MODE,
+            Mode(ref: '~contains~2~contains~6')
+          ]),
       Mode(
-          beginKeywords: "command on",
+          className: "function",
+          begin: "\\bend\\s+",
           end: "\$",
-          contains: [Mode(ref: '~contains~0'), Mode(ref: '~contains~2~contains~1'), APOS_STRING_MODE, QUOTE_STRING_MODE, BINARY_NUMBER_MODE, C_NUMBER_MODE, Mode(ref: '~contains~2~contains~6')]),
-      Mode(className: "meta", variants: [Mode(begin: "<\\?(rev|lc|livecode)", relevance: 10), Mode(begin: "<\\?"), Mode(begin: "\\?>")]),
+          keywords: "end",
+          contains: [
+            Mode(ref: '~contains~2~contains~1'),
+            Mode(ref: '~contains~2~contains~6')
+          ],
+          relevance: 0),
+      Mode(beginKeywords: "command on", end: "\$", contains: [
+        Mode(ref: '~contains~0'),
+        Mode(ref: '~contains~2~contains~1'),
+        APOS_STRING_MODE,
+        QUOTE_STRING_MODE,
+        BINARY_NUMBER_MODE,
+        C_NUMBER_MODE,
+        Mode(ref: '~contains~2~contains~6')
+      ]),
+      Mode(className: "meta", variants: [
+        Mode(begin: "<\\?(rev|lc|livecode)", relevance: 10),
+        Mode(begin: "<\\?"),
+        Mode(begin: "\\?>")
+      ]),
       APOS_STRING_MODE,
       QUOTE_STRING_MODE,
       BINARY_NUMBER_MODE,
@@ -39,7 +79,19 @@ final livecodeserver = Mode(
       Mode(ref: '~contains~2~contains~6'),
       C_BLOCK_COMMENT_MODE,
       HASH_COMMENT_MODE,
-      Mode(className: "comment", begin: "--", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)]),
-      Mode(className: "comment", begin: "[^:]//", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)])
+      Mode(className: "comment", begin: "--", end: "\$", contains: [
+        PHRASAL_WORDS_MODE,
+        Mode(
+            className: "doctag",
+            begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+            relevance: 0)
+      ]),
+      Mode(className: "comment", begin: "[^:]//", end: "\$", contains: [
+        PHRASAL_WORDS_MODE,
+        Mode(
+            className: "doctag",
+            begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+            relevance: 0)
+      ])
     ],
     illegal: ";\$|^\\[|^=|&|{");

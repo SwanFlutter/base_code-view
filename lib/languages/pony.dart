@@ -11,10 +11,23 @@ final pony = Mode(refs: {}, keywords: {
 }, contains: [
   Mode(className: "type", begin: "\\b_?[A-Z][\\w]*", relevance: 0),
   Mode(className: "string", begin: "\"\"\"", end: "\"\"\"", relevance: 10),
-  Mode(className: "string", begin: "\"", end: "\"", contains: [BACKSLASH_ESCAPE]),
-  Mode(className: "string", begin: "'", end: "'", contains: [BACKSLASH_ESCAPE], relevance: 0),
+  Mode(
+      className: "string",
+      begin: "\"",
+      end: "\"",
+      contains: [BACKSLASH_ESCAPE]),
+  Mode(
+      className: "string",
+      begin: "'",
+      end: "'",
+      contains: [BACKSLASH_ESCAPE],
+      relevance: 0),
   Mode(begin: "[a-zA-Z]\\w*'", relevance: 0),
-  Mode(className: "number", begin: "(-?)(\\b0[xX][a-fA-F0-9]+|\\b0[bB][01]+|(\\b\\d+(_\\d+)?(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)", relevance: 0),
+  Mode(
+      className: "number",
+      begin:
+          "(-?)(\\b0[xX][a-fA-F0-9]+|\\b0[bB][01]+|(\\b\\d+(_\\d+)?(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)",
+      relevance: 0),
   C_LINE_COMMENT_MODE,
   C_BLOCK_COMMENT_MODE
 ]);

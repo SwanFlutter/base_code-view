@@ -14,5 +14,14 @@ final axapta = Mode(
       QUOTE_STRING_MODE,
       C_NUMBER_MODE,
       Mode(className: "meta", begin: "#", end: "\$"),
-      Mode(className: "class", beginKeywords: "class interface", end: "{", excludeEnd: true, illegal: ":", contains: [Mode(beginKeywords: "extends implements"), UNDERSCORE_TITLE_MODE])
+      Mode(
+          className: "class",
+          beginKeywords: "class interface",
+          end: "{",
+          excludeEnd: true,
+          illegal: ":",
+          contains: [
+            Mode(beginKeywords: "extends implements"),
+            UNDERSCORE_TITLE_MODE
+          ])
     ]);

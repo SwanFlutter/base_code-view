@@ -1,7 +1,7 @@
 name: base_cod_view
 description: "A starting point for Dart libraries or applications."
 version: 0.0.1
-homepage:
+homepage: "https://github.com/SwanFlutter/base_code-view.git"
 
 environment:
   sdk: ^3.5.4

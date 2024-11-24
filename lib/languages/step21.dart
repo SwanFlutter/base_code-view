@@ -14,10 +14,28 @@ final step21 = Mode(
       Mode(className: "meta", begin: "END-ISO-10303-21;", relevance: 10),
       C_LINE_COMMENT_MODE,
       C_BLOCK_COMMENT_MODE,
-      Mode(className: "comment", begin: "/\\*\\*!", end: "\\*/", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)]),
+      Mode(className: "comment", begin: "/\\*\\*!", end: "\\*/", contains: [
+        PHRASAL_WORDS_MODE,
+        Mode(
+            className: "doctag",
+            begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+            relevance: 0)
+      ]),
       C_NUMBER_MODE,
-      Mode(className: "string", begin: "'", end: "'", illegal: null, contains: [BACKSLASH_ESCAPE]),
-      Mode(className: "string", begin: "\"", end: "\"", illegal: null, contains: [BACKSLASH_ESCAPE]),
+      Mode(
+          className: "string",
+          begin: "'",
+          end: "'",
+          illegal: null,
+          contains: [BACKSLASH_ESCAPE]),
+      Mode(
+          className: "string",
+          begin: "\"",
+          end: "\"",
+          illegal: null,
+          contains: [BACKSLASH_ESCAPE]),
       Mode(className: "string", begin: "'", end: "'"),
-      Mode(className: "symbol", variants: [Mode(begin: "#", end: "\\d+", illegal: "\\W")])
+      Mode(
+          className: "symbol",
+          variants: [Mode(begin: "#", end: "\\d+", illegal: "\\W")])
     ]);

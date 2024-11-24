@@ -189,5 +189,4 @@ export 'package:base_cod_view/languages/xml.dart';
 export 'package:base_cod_view/languages/xquery.dart';
 export 'package:base_cod_view/languages/zephir.dart';
 
-
 export 'src/base_code_view.dart';

@@ -9,7 +9,13 @@ final vala = Mode(refs: {}, keywords: {
   "built_in": "DBus GLib CCode Gee Object Gtk Posix",
   "literal": "false true null"
 }, contains: [
-  Mode(className: "class", beginKeywords: "class interface namespace", end: "{", excludeEnd: true, illegal: "[^,:\\n\\s\\.]", contains: [UNDERSCORE_TITLE_MODE]),
+  Mode(
+      className: "class",
+      beginKeywords: "class interface namespace",
+      end: "{",
+      excludeEnd: true,
+      illegal: "[^,:\\n\\s\\.]",
+      contains: [UNDERSCORE_TITLE_MODE]),
   C_LINE_COMMENT_MODE,
   C_BLOCK_COMMENT_MODE,
   Mode(className: "string", begin: "\"\"\"", end: "\"\"\"", relevance: 5),

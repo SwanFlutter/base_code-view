@@ -8,7 +8,8 @@ final clean = Mode(refs: {}, aliases: [
   "icl",
   "dcl"
 ], keywords: {
-  "keyword": "if let in with where case of class instance otherwise implementation definition system module from import qualified as special code inline foreign export ccall stdcall generic derive infix infixl infixr",
+  "keyword":
+      "if let in with where case of class instance otherwise implementation definition system module from import qualified as special code inline foreign export ccall stdcall generic derive infix infixl infixr",
   "built_in": "Int Real Char Bool",
   "literal": "True False"
 }, contains: [

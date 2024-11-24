@@ -14,10 +14,35 @@ final basic = Mode(
     },
     contains: [
       QUOTE_STRING_MODE,
-      Mode(className: "comment", begin: "REM", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)], relevance: 10),
-      Mode(className: "comment", begin: "'", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)], relevance: 0),
+      Mode(
+          className: "comment",
+          begin: "REM",
+          end: "\$",
+          contains: [
+            PHRASAL_WORDS_MODE,
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
+          ],
+          relevance: 10),
+      Mode(
+          className: "comment",
+          begin: "'",
+          end: "\$",
+          contains: [
+            PHRASAL_WORDS_MODE,
+            Mode(
+                className: "doctag",
+                begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                relevance: 0)
+          ],
+          relevance: 0),
       Mode(className: "symbol", begin: "^[0-9]+ ", relevance: 10),
-      Mode(className: "number", begin: "\\b([0-9]+[0-9edED.]*[#!]?)", relevance: 0),
+      Mode(
+          className: "number",
+          begin: "\\b([0-9]+[0-9edED.]*[#!]?)",
+          relevance: 0),
       Mode(className: "number", begin: "(&[hH][0-9a-fA-F]{1,4})"),
       Mode(className: "number", begin: "(&[oO][0-7]{1,6})")
     ]);

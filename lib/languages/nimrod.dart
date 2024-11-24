@@ -13,7 +13,11 @@ final nimrod = Mode(refs: {}, aliases: [
       "int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 float float32 float64 bool char string cstring pointer expr stmt void auto any range array openarray varargs seq set clong culong cchar cschar cshort cint csize clonglong cfloat cdouble clongdouble cuchar cushort cuint culonglong cstringarray semistatic"
 }, contains: [
   Mode(className: "meta", begin: "{\\.", end: "\\.}", relevance: 10),
-  Mode(className: "string", begin: "[a-zA-Z]\\w*\"", end: "\"", contains: [Mode(begin: "\"\"")]),
+  Mode(
+      className: "string",
+      begin: "[a-zA-Z]\\w*\"",
+      end: "\"",
+      contains: [Mode(begin: "\"\"")]),
   Mode(className: "string", begin: "([a-zA-Z]\\w*)?\"\"\"", end: "\"\"\""),
   QUOTE_STRING_MODE,
   Mode(className: "type", begin: "\\b[A-Z]\\w+\\b", relevance: 0),

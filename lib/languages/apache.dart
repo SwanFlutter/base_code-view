@@ -5,7 +5,8 @@ import '../src/tools/mode.dart';
 
 final apache = Mode(
     refs: {
-      '~contains~2~starts~contains~1~contains~1': Mode(className: "number", begin: "[\\\$%]\\d+"),
+      '~contains~2~starts~contains~1~contains~1':
+          Mode(className: "number", begin: "[\\\$%]\\d+"),
     },
     aliases: ["apacheconf"],
     case_insensitive: true,
@@ -16,12 +17,22 @@ final apache = Mode(
           className: "attribute",
           begin: "\\w+",
           relevance: 0,
-          keywords: {"nomarkup": "order deny allow setenv rewriterule rewriteengine rewritecond documentroot sethandler errordocument loadmodule options header listen serverroot servername"},
+          keywords: {
+            "nomarkup":
+                "order deny allow setenv rewriterule rewriteengine rewritecond documentroot sethandler errordocument loadmodule options header listen serverroot servername"
+          },
           starts: Mode(end: "\$", relevance: 0, keywords: {
             "literal": "on off all"
           }, contains: [
             Mode(className: "meta", begin: "\\s\\[", end: "\\]\$"),
-            Mode(className: "variable", begin: "[\\\$%]\\{", end: "\\}", contains: [Mode(self: true), Mode(ref: '~contains~2~starts~contains~1~contains~1')]),
+            Mode(
+                className: "variable",
+                begin: "[\\\$%]\\{",
+                end: "\\}",
+                contains: [
+                  Mode(self: true),
+                  Mode(ref: '~contains~2~starts~contains~1~contains~1')
+                ]),
             Mode(ref: '~contains~2~starts~contains~1~contains~1'),
             QUOTE_STRING_MODE
           ]))

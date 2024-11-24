@@ -7,14 +7,44 @@ final autoit = Mode(
     refs: {
       '~contains~3': Mode(variants: [BINARY_NUMBER_MODE, C_NUMBER_MODE]),
       '~contains~2': Mode(className: "string", variants: [
-        Mode(begin: "\"", end: "\"", contains: [Mode(begin: "\"\"", relevance: 0)]),
+        Mode(
+            begin: "\"",
+            end: "\"",
+            contains: [Mode(begin: "\"\"", relevance: 0)]),
         Mode(begin: "'", end: "'", contains: [Mode(begin: "''", relevance: 0)])
       ]),
       '~contains~1': Mode(begin: "\\\$[A-z0-9_]+"),
       '~contains~0': Mode(variants: [
-        Mode(className: "comment", begin: ";", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)], relevance: 0),
-        Mode(className: "comment", begin: "#cs", end: "#ce", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)]),
-        Mode(className: "comment", begin: "#comments-start", end: "#comments-end", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)])
+        Mode(
+            className: "comment",
+            begin: ";",
+            end: "\$",
+            contains: [
+              PHRASAL_WORDS_MODE,
+              Mode(
+                  className: "doctag",
+                  begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                  relevance: 0)
+            ],
+            relevance: 0),
+        Mode(className: "comment", begin: "#cs", end: "#ce", contains: [
+          PHRASAL_WORDS_MODE,
+          Mode(
+              className: "doctag",
+              begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+              relevance: 0)
+        ]),
+        Mode(
+            className: "comment",
+            begin: "#comments-start",
+            end: "#comments-end",
+            contains: [
+              PHRASAL_WORDS_MODE,
+              Mode(
+                  className: "doctag",
+                  begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+                  relevance: 0)
+            ])
       ]),
     },
     case_insensitive: true,
@@ -32,7 +62,8 @@ final autoit = Mode(
       Mode(ref: '~contains~2'),
       Mode(ref: '~contains~3'),
       Mode(className: "meta", begin: "#", end: "\$", keywords: {
-        "meta-keyword": "comments include include-once NoTrayIcon OnAutoItStartRegister pragma compile RequireAdmin"
+        "meta-keyword":
+            "comments include include-once NoTrayIcon OnAutoItStartRegister pragma compile RequireAdmin"
       }, contains: [
         Mode(begin: "\\\\\\n", relevance: 0),
         Mode(
@@ -43,16 +74,31 @@ final autoit = Mode(
               Mode(ref: '~contains~2'),
               Mode(className: "meta-string", variants: [
                 Mode(begin: "<", end: ">"),
-                Mode(begin: "\"", end: "\"", contains: [Mode(begin: "\"\"", relevance: 0)]),
-                Mode(begin: "'", end: "'", contains: [Mode(begin: "''", relevance: 0)])
+                Mode(
+                    begin: "\"",
+                    end: "\"",
+                    contains: [Mode(begin: "\"\"", relevance: 0)]),
+                Mode(
+                    begin: "'",
+                    end: "'",
+                    contains: [Mode(begin: "''", relevance: 0)])
               ])
             ]),
         Mode(ref: '~contains~2'),
         Mode(ref: '~contains~0')
       ]),
       Mode(className: "symbol", begin: "@[A-z0-9_]+"),
-      Mode(className: "function", beginKeywords: "Func", end: "\$", illegal: "\\\$|\\[|%", contains: [
-        UNDERSCORE_TITLE_MODE,
-        Mode(className: "params", begin: "\\(", end: "\\)", contains: [Mode(ref: '~contains~1'), Mode(ref: '~contains~2'), Mode(ref: '~contains~3')])
-      ])
+      Mode(
+          className: "function",
+          beginKeywords: "Func",
+          end: "\$",
+          illegal: "\\\$|\\[|%",
+          contains: [
+            UNDERSCORE_TITLE_MODE,
+            Mode(className: "params", begin: "\\(", end: "\\)", contains: [
+              Mode(ref: '~contains~1'),
+              Mode(ref: '~contains~2'),
+              Mode(ref: '~contains~3')
+            ])
+          ])
     ]);

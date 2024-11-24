@@ -17,8 +17,22 @@ final vim = Mode(
       NUMBER_MODE,
       Mode(className: "string", begin: "'", end: "'", illegal: "\\n"),
       Mode(className: "string", begin: "\"(\\\\\"|\\n\\\\|[^\"\\n])*\""),
-      Mode(className: "comment", begin: "\"", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)]),
+      Mode(className: "comment", begin: "\"", end: "\$", contains: [
+        PHRASAL_WORDS_MODE,
+        Mode(
+            className: "doctag",
+            begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+            relevance: 0)
+      ]),
       Mode(className: "variable", begin: "[bwtglsav]:[\\w\\d_]*"),
-      Mode(className: "function", beginKeywords: "function function!", end: "\$", relevance: 0, contains: [TITLE_MODE, Mode(className: "params", begin: "\\(", end: "\\)")]),
+      Mode(
+          className: "function",
+          beginKeywords: "function function!",
+          end: "\$",
+          relevance: 0,
+          contains: [
+            TITLE_MODE,
+            Mode(className: "params", begin: "\\(", end: "\\)")
+          ]),
       Mode(className: "symbol", begin: "<[\\w-]+>")
     ]);

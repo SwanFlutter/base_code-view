@@ -5,10 +5,29 @@ import '../src/tools/mode.dart';
 
 final lang1C = Mode(
     refs: {
-      '~contains~1~contains~0~contains~0~contains~2': Mode(begin: "'", end: "'", excludeBegin: true, excludeEnd: true, contains: [Mode(className: "number", begin: "\\d{4}([\\.\\\\/:-]?\\d{2}){0,5}")]),
-      '~contains~1~contains~0~contains~0~contains~1': Mode(className: "string", begin: "\"|\\|", end: "\"|\$", contains: [Mode(begin: "\"\"")]),
-      '~contains~1~contains~0~contains~0~contains~0': Mode(className: "number", begin: "\\b\\d+(\\.\\d+)?", relevance: 0),
-      '~contains~0~contains~0': Mode(className: "comment", begin: "//", end: "\$", contains: [PHRASAL_WORDS_MODE, Mode(className: "doctag", begin: "(?:TODO|FIXME|NOTE|BUG|XXX):", relevance: 0)]),
+      '~contains~1~contains~0~contains~0~contains~2': Mode(
+          begin: "'",
+          end: "'",
+          excludeBegin: true,
+          excludeEnd: true,
+          contains: [
+            Mode(className: "number", begin: "\\d{4}([\\.\\\\/:-]?\\d{2}){0,5}")
+          ]),
+      '~contains~1~contains~0~contains~0~contains~1': Mode(
+          className: "string",
+          begin: "\"|\\|",
+          end: "\"|\$",
+          contains: [Mode(begin: "\"\"")]),
+      '~contains~1~contains~0~contains~0~contains~0':
+          Mode(className: "number", begin: "\\b\\d+(\\.\\d+)?", relevance: 0),
+      '~contains~0~contains~0':
+          Mode(className: "comment", begin: "//", end: "\$", contains: [
+        PHRASAL_WORDS_MODE,
+        Mode(
+            className: "doctag",
+            begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+            relevance: 0)
+      ]),
     },
     case_insensitive: true,
     lexemes: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+",
@@ -24,30 +43,55 @@ final lang1C = Mode(
       "literal": "null истина ложь неопределено"
     },
     contains: [
-      Mode(className: "meta", lexemes: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+", begin: "#|&", end: "\$", keywords: {
-        "meta-keyword":
-            "далее возврат вызватьисключение выполнить для если и из или иначе иначеесли исключение каждого конецесли конецпопытки конеццикла не новый перейти перем по пока попытка прервать продолжить тогда цикл экспорт загрузитьизфайла вебклиент вместо внешнеесоединение клиент конецобласти мобильноеприложениеклиент мобильноеприложениесервер наклиенте наклиентенасервере наклиентенасерверебезконтекста насервере насерверебезконтекста область перед после сервер толстыйклиентобычноеприложение толстыйклиентуправляемоеприложение тонкийклиент "
-      }, contains: [
-        Mode(ref: '~contains~0~contains~0')
-      ]),
-      Mode(className: "function", lexemes: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+", variants: [
-        Mode(begin: "процедура|функция", end: "\\)", keywords: "процедура функция"),
-        Mode(begin: "конецпроцедуры|конецфункции", keywords: "конецпроцедуры конецфункции")
-      ], contains: [
-        Mode(begin: "\\(", end: "\\)", endsParent: true, contains: [
-          Mode(
-              className: "params",
-              lexemes: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+",
-              begin: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+",
-              end: ",",
-              excludeEnd: true,
-              endsWithParent: true,
-              keywords: {"keyword": "знач", "literal": "null истина ложь неопределено"},
-              contains: [Mode(ref: '~contains~1~contains~0~contains~0~contains~0'), Mode(ref: '~contains~1~contains~0~contains~0~contains~1'), Mode(ref: '~contains~1~contains~0~contains~0~contains~2')]),
-          Mode(ref: '~contains~0~contains~0')
-        ]),
-        Mode(className: "title", begin: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+", relevance: 0)
-      ]),
+      Mode(
+          className: "meta",
+          lexemes: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+",
+          begin: "#|&",
+          end: "\$",
+          keywords: {
+            "meta-keyword":
+                "далее возврат вызватьисключение выполнить для если и из или иначе иначеесли исключение каждого конецесли конецпопытки конеццикла не новый перейти перем по пока попытка прервать продолжить тогда цикл экспорт загрузитьизфайла вебклиент вместо внешнеесоединение клиент конецобласти мобильноеприложениеклиент мобильноеприложениесервер наклиенте наклиентенасервере наклиентенасерверебезконтекста насервере насерверебезконтекста область перед после сервер толстыйклиентобычноеприложение толстыйклиентуправляемоеприложение тонкийклиент "
+          },
+          contains: [
+            Mode(ref: '~contains~0~contains~0')
+          ]),
+      Mode(
+          className: "function",
+          lexemes: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+",
+          variants: [
+            Mode(
+                begin: "процедура|функция",
+                end: "\\)",
+                keywords: "процедура функция"),
+            Mode(
+                begin: "конецпроцедуры|конецфункции",
+                keywords: "конецпроцедуры конецфункции")
+          ],
+          contains: [
+            Mode(begin: "\\(", end: "\\)", endsParent: true, contains: [
+              Mode(
+                  className: "params",
+                  lexemes: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+",
+                  begin: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+",
+                  end: ",",
+                  excludeEnd: true,
+                  endsWithParent: true,
+                  keywords: {
+                    "keyword": "знач",
+                    "literal": "null истина ложь неопределено"
+                  },
+                  contains: [
+                    Mode(ref: '~contains~1~contains~0~contains~0~contains~0'),
+                    Mode(ref: '~contains~1~contains~0~contains~0~contains~1'),
+                    Mode(ref: '~contains~1~contains~0~contains~0~contains~2')
+                  ]),
+              Mode(ref: '~contains~0~contains~0')
+            ]),
+            Mode(
+                className: "title",
+                begin: "[A-Za-zА-Яа-яёЁ_][A-Za-zА-Яа-яёЁ_0-9]+",
+                relevance: 0)
+          ]),
       Mode(ref: '~contains~0~contains~0'),
       Mode(className: "symbol", begin: "\\x7e", end: ";|:", excludeEnd: true),
       Mode(ref: '~contains~1~contains~0~contains~0~contains~0'),

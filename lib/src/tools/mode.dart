@@ -1,5 +1,3 @@
-
-
 import '../../languages/language/languages.dart';
 
 class Mode {
@@ -114,12 +112,6 @@ class Mode {
       ..terminators = b.terminators ?? a.terminators;
   }
 }
-
-
-
-
-
-
 
 /*  Mode? _getLanguageMode(Languages lang) {
   switch (lang) {
