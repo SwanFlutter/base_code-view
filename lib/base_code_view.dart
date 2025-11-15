@@ -1,6 +1,5 @@
-library base_cod_view;
+library;
 
-export 'package:base_cod_view/languages/language/languages.dart';
 export 'package:base_cod_view/languages/1c.dart';
 export 'package:base_cod_view/languages/abnf.dart';
 export 'package:base_cod_view/languages/accesslog.dart';
@@ -90,9 +89,10 @@ export 'package:base_cod_view/languages/java.dart';
 export 'package:base_cod_view/languages/javascript.dart';
 export 'package:base_cod_view/languages/jboss-cli.dart';
 export 'package:base_cod_view/languages/json.dart';
-export 'package:base_cod_view/languages/julia_repl.dart';
 export 'package:base_cod_view/languages/julia.dart';
+export 'package:base_cod_view/languages/julia_repl.dart';
 export 'package:base_cod_view/languages/kotlin.dart';
+export 'package:base_cod_view/languages/language/languages.dart';
 export 'package:base_cod_view/languages/lasso.dart';
 export 'package:base_cod_view/languages/ldif.dart';
 export 'package:base_cod_view/languages/leaf.dart';
