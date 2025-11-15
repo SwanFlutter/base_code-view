@@ -9,7 +9,7 @@ class Mode {
   /// `String | Map<String, [String, int]>`
   dynamic keywords;
   String? illegal;
-  bool? case_insensitive;
+  bool? caseInsensitive;
   List<Mode?>? contains;
   List<Mode?>? variants;
   Mode? starts;
@@ -36,8 +36,8 @@ class Mode {
   RegExp? beginRe;
   RegExp? endRe;
   RegExp? illegalRe;
-  String? terminator_end;
-  List<Mode>? cached_variants;
+  String? terminatorEnd;
+  List<Mode>? cachedVariants;
   RegExp? terminators;
 
   bool? self;
@@ -50,7 +50,7 @@ class Mode {
     this.aliases,
     this.keywords,
     this.illegal,
-    this.case_insensitive,
+    this.caseInsensitive,
     this.contains,
     this.variants,
     this.starts,
@@ -80,7 +80,7 @@ class Mode {
       ..aliases = b.aliases ?? a.aliases
       ..keywords = b.keywords ?? a.keywords
       ..illegal = b.illegal ?? a.illegal
-      ..case_insensitive = b.case_insensitive ?? a.case_insensitive
+      ..caseInsensitive = b.caseInsensitive ?? a.caseInsensitive
       ..contains = b.contains ?? a.contains
       ..variants = b.variants ?? a.variants
       ..starts = b.starts ?? a.starts
@@ -107,8 +107,8 @@ class Mode {
       ..beginRe = b.beginRe ?? a.beginRe
       ..endRe = b.endRe ?? a.endRe
       ..illegalRe = b.illegalRe ?? a.illegalRe
-      ..terminator_end = b.terminator_end ?? a.terminator_end
-      ..cached_variants = b.cached_variants ?? a.cached_variants
+      ..terminatorEnd = b.terminatorEnd ?? a.terminatorEnd
+      ..cachedVariants = b.cachedVariants ?? a.cachedVariants
       ..terminators = b.terminators ?? a.terminators;
   }
 }

@@ -7,7 +7,7 @@ import '../src/tools/mode.dart';
 final xquery = Mode(
     refs: {},
     aliases: ["xpath", "xq"],
-    case_insensitive: false,
+    caseInsensitive: false,
     lexemes: "[a-zA-Z\\\$][a-zA-Z0-9_:\\-]*",
     illegal: "(proc)|(abstract)|(extends)|(until)|(#)",
     keywords: {

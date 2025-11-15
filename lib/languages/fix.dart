@@ -23,4 +23,4 @@ final fix = Mode(refs: {}, contains: [
             excludeBegin: true,
             className: "string")
       ])
-], case_insensitive: true);
+], caseInsensitive: true);

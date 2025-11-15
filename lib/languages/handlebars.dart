@@ -31,7 +31,7 @@ final handlebars = Mode(
           className: "name"),
     },
     aliases: ["hbs", "html.hbs", "html.handlebars"],
-    case_insensitive: true,
+    caseInsensitive: true,
     subLanguage: [Languages.xml],
     contains: [
       Mode(begin: "\\\\\\{\\{", skip: true),

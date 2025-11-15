@@ -4,7 +4,7 @@ import '../src/tools/mode.dart';
 
 final csp = Mode(
     refs: {},
-    case_insensitive: false,
+    caseInsensitive: false,
     lexemes: "[a-zA-Z][a-zA-Z0-9_-]*",
     keywords: {
       "keyword":

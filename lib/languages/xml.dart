@@ -56,7 +56,7 @@ final xml = Mode(
       "wsf",
       "svg"
     ],
-    case_insensitive: true,
+    caseInsensitive: true,
     contains: [
       Mode(
           className: "meta",

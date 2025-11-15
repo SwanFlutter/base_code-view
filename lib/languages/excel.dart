@@ -6,7 +6,7 @@ import '../src/tools/mode.dart';
 final excel = Mode(
     refs: {},
     aliases: ["xlsx", "xls"],
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: "[a-zA-Z][\\w\\.]*",
     keywords: {
       "built_in":

@@ -8,7 +8,7 @@ import '../src/tools/mode.dart';
 final dust = Mode(
     refs: {},
     aliases: ["dst"],
-    case_insensitive: true,
+    caseInsensitive: true,
     subLanguage: [Languages.xml],
     contains: [
       Mode(

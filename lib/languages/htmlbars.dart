@@ -7,7 +7,7 @@ import '../src/tools/mode.dart';
 
 final htmlbars = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     subLanguage: [Languages.xml],
     contains: [
       Mode(className: "comment", begin: "{{!(--)?", end: "(--)?}}", contains: [

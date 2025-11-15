@@ -25,7 +25,7 @@ final twig = Mode(
           ]),
     },
     aliases: ["craftcms"],
-    case_insensitive: true,
+    caseInsensitive: true,
     subLanguage: [Languages.xml],
     contains: [
       Mode(className: "comment", begin: "\\{#", end: "#}", contains: [

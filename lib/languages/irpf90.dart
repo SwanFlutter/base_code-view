@@ -5,7 +5,7 @@ import '../src/tools/mode.dart';
 
 final irpf90 = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     keywords: {
       "literal": ".False. .True.",
       "keyword":

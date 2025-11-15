@@ -152,13 +152,13 @@ ${toHtml()}
             highlightStyle = styles[className];
           }
         }
-        
+
         // Merge highlight style with base style to ensure proper color inheritance
         // If no highlight style, just use base style colors
         final effectiveStyle = highlightStyle != null
             ? defaultBaseStyle.merge(highlightStyle)
             : defaultBaseStyle;
-            
+
         spans.add(TextSpan(
           text: node.value,
           style: effectiveStyle,

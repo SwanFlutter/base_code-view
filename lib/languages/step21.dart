@@ -6,7 +6,7 @@ import '../src/tools/mode.dart';
 final step21 = Mode(
     refs: {},
     aliases: ["p21", "step", "stp"],
-    case_insensitive: true,
+    caseInsensitive: true,
     lexemes: "[A-Z_][A-Z0-9_.]*",
     keywords: {"keyword": "HEADER ENDSEC DATA"},
     contains: [

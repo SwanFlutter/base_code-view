@@ -5,7 +5,7 @@ import '../src/tools/mode.dart';
 
 final armasm = Mode(
     refs: {},
-    case_insensitive: true,
+    caseInsensitive: true,
     aliases: ["arm"],
     lexemes: "\\.?[a-zA-Z]\\w*",
     keywords: {
