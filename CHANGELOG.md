@@ -1,3 +1,9 @@
+## 0.0.3
+
+* Fixed property naming across language definitions
+* Fix pub point
+
+
 ## 0.0.2
 
 * Added text selection color support with `::selection` CSS
