@@ -1,3 +1,12 @@
+
+## [0.0.4] - 2025-11-18
+
+### Fixed
+- Fixed syntax highlighting color inheritance in [toTextSpan()](cci:1://file:///g:/Android/Pakege/base_cod_view/lib/src/tools/result.dart:87:2-179:3) method
+- Corrected style propagation to child nodes
+- Resolved issue where all text appeared white/gray
+
+
 ## 0.0.3
 
 * Fixed property naming across language definitions

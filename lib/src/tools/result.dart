@@ -134,38 +134,39 @@ ${toHtml()}
 
     final styles = {...defaultStyles, ...?customStyles};
 
-    List<InlineSpan> traverse(Node node) {
+    List<InlineSpan> traverse(Node node, TextStyle? inheritedStyle) {
       final List<InlineSpan> spans = [];
 
-      if (node.value != null) {
-        TextStyle? highlightStyle;
-        if (node.className != null) {
-          // Remove 'hljs-' prefix if exists
-          var className = node.className!.replaceFirst('hljs-', '');
+      TextStyle? highlightStyle;
+      if (node.className != null) {
+        // Remove 'hljs-' prefix if exists
+        var className = node.className!.replaceFirst('hljs-', '');
 
-          // Try exact match first
+        // Try exact match first
+        highlightStyle = styles[className];
+
+        // If no match and contains underscore, try with hyphens
+        if (highlightStyle == null && className.contains('_')) {
+          className = className.replaceAll('_', '-');
           highlightStyle = styles[className];
-
-          // If no match and contains underscore, try with hyphens
-          if (highlightStyle == null && className.contains('_')) {
-            className = className.replaceAll('_', '-');
-            highlightStyle = styles[className];
-          }
         }
+      }
 
-        // Merge highlight style with base style to ensure proper color inheritance
-        // If no highlight style, just use base style colors
-        final effectiveStyle = highlightStyle != null
-            ? defaultBaseStyle.merge(highlightStyle)
-            : defaultBaseStyle;
+      // Base style for this node (from parent or default)
+      final baseForNode = inheritedStyle ?? defaultBaseStyle;
 
+      // Merge base style with highlight style (highlight overrides color, etc.)
+      final effectiveStyle =
+          highlightStyle != null ? baseForNode.merge(highlightStyle) : baseForNode;
+
+      if (node.value != null) {
         spans.add(TextSpan(
           text: node.value,
           style: effectiveStyle,
         ));
       } else if (node.children != null) {
         for (var child in node.children!) {
-          spans.addAll(traverse(child));
+          spans.addAll(traverse(child, effectiveStyle));
         }
       }
 
@@ -174,7 +175,7 @@ ${toHtml()}
 
     final List<InlineSpan> allSpans = [];
     for (var node in nodes!) {
-      allSpans.addAll(traverse(node));
+      allSpans.addAll(traverse(node, defaultBaseStyle));
     }
 
     return TextSpan(

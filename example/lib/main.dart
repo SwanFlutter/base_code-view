@@ -218,7 +218,7 @@ if __name__ == "__main__":
                   style: const TextStyle(
                     fontFamily: 'monospace',
                     fontSize: 14,
-                    color: Color(0xFFd4d4d4),
+                    height: 1.5,
                   ),
                 ),
               ),
