@@ -156,8 +156,9 @@ ${toHtml()}
       final baseForNode = inheritedStyle ?? defaultBaseStyle;
 
       // Merge base style with highlight style (highlight overrides color, etc.)
-      final effectiveStyle =
-          highlightStyle != null ? baseForNode.merge(highlightStyle) : baseForNode;
+      final effectiveStyle = highlightStyle != null
+          ? baseForNode.merge(highlightStyle)
+          : baseForNode;
 
       if (node.value != null) {
         spans.add(TextSpan(
