@@ -4,11 +4,27 @@ import '../../languages/language/languages.dart';
 import 'mode.dart';
 import 'node.dart';
 
+/// Represents the result of syntax highlighting.
+///
+/// Contains the highlighted node tree, language information, and relevance scores.
+/// Can be converted to HTML or other formats for display.
 class Result {
+  /// Relevance score indicating how well the syntax highlighting matched.
+  /// Higher scores indicate better language detection accuracy.
   int? relevance;
+
+  /// The root nodes containing the highlighted and styled code.
+  /// These nodes can be traversed and converted to HTML or other formats.
   List<Node>? nodes;
+
+  /// The detected or specified programming language.
   Languages? language;
+
+  /// The top-level mode/syntax rule currently active.
   Mode? top;
+
+  /// Second-best matching language (when using auto-detection).
+  /// This is set when multiple languages could potentially match the code.
   Result? secondBest;
 
   Result({
@@ -19,14 +35,16 @@ class Result {
     this.secondBest,
   });
 
-  String _escape(String value) {
-    return value
-        .replaceAll(RegExp(r'&'), '&amp;')
-        .replaceAll(RegExp(r'<'), '&lt;')
-        .replaceAll(RegExp(r'>'), '&gt;');
-  }
-
-  /// Returns CSS styles for code highlighting including selection color
+  /// Returns CSS styles for code highlighting including selection color.
+  ///
+  /// This generates CSS rules for styling text selection in highlighted code.
+  /// Supports both standard and Mozilla-specific selection pseudo-elements.
+  ///
+  /// Parameters:
+  ///   - [selectionColor]: The background color of selected text (default: 'rgba(100, 150, 200, 0.3)')
+  ///   - [selectionTextColor]: The color of selected text (default: 'inherit')
+  ///
+  /// Returns: CSS string with selection styles
   String getSelectionCss({
     String selectionColor = 'rgba(100, 150, 200, 0.3)',
     String selectionTextColor = 'inherit',
@@ -44,6 +62,20 @@ class Result {
 ''';
   }
 
+  String _escape(String value) {
+    return value
+        .replaceAll(RegExp(r'&'), '&amp;')
+        .replaceAll(RegExp(r'<'), '&lt;')
+        .replaceAll(RegExp(r'>'), '&gt;');
+  }
+
+  /// Converts the highlighted code to HTML format.
+  ///
+  /// Traverses the node tree and generates HTML span elements with CSS classes
+  /// for syntax highlighting. The 'hljs-' prefix is added to class names unless
+  /// the node has [Node.noPrefix] set to true.
+  ///
+  /// Returns: HTML string representation of the highlighted code
   String toHtml() {
     var str = '';
 
@@ -72,7 +104,16 @@ class Result {
     return str;
   }
 
-  /// Returns complete HTML with inline CSS including selection styles
+  /// Converts the highlighted code to HTML with inline CSS styling.
+  ///
+  /// Includes both the syntax-highlighted code and CSS rules for text selection.
+  /// Useful for generating complete, standalone HTML documents or snippets.
+  ///
+  /// Parameters:
+  ///   - [selectionColor]: Background color for selected text
+  ///   - [selectionTextColor]: Text color for selected text
+  ///
+  /// Returns: HTML string with embedded CSS styles
   String toHtmlWithStyles({
     String selectionColor = 'rgba(100, 150, 200, 0.3)',
     String selectionTextColor = 'inherit',
@@ -85,8 +126,17 @@ ${toHtml()}
 ''';
   }
 
-  /// Converts the highlighted code to Flutter TextSpan for use with SelectableText.rich
-  /// This allows native text selection with Flutter's selection color
+  /// Converts the highlighted code to Flutter TextSpan for use with SelectableText.rich.
+  ///
+  /// This enables native Flutter text selection with customizable selection colors.
+  /// Automatically applies predefined syntax highlighting styles from VS Code Dark theme.
+  /// You can override these styles with custom [customStyles] parameter.
+  ///
+  /// Parameters:
+  ///   - [baseStyle]: Base TextStyle applied to all text (default: monospace, gray)
+  ///   - [customStyles]: Custom TextStyles mapped by CSS class name (overrides defaults)
+  ///
+  /// Returns: TextSpan ready for use with SelectableText.rich() or RichText widgets
   TextSpan toTextSpan({
     TextStyle? baseStyle,
     Map<String, TextStyle>? customStyles,

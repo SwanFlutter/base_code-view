@@ -9,7 +9,7 @@ Add the package to your `pubspec.yaml` dependencies:
 
 ```yaml
 dependencies:
-  base_cod_view: ^0.0.4
+  base_cod_view: ^0.0.5
 ```
 
 Then install:

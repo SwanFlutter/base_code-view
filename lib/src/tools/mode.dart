@@ -1,5 +1,19 @@
 import '../../languages/language/languages.dart';
 
+/// Represents a syntax highlighting mode/rule for a programming language.
+///
+/// Modes define how source code should be tokenized and highlighted.
+/// They contain regular expressions for matching code elements and can
+/// be nested to represent complex language grammars.
+///
+/// Properties are organized into several categories:
+///   - Reference: [ref], [refs], [self]
+///   - Language Info: [aliases], [subLanguage], [disableAutodetect]
+///   - Matching Patterns: [begin], [beginKeywords], [end], [keywords], [illegal]
+///   - Nesting: [contains], [variants], [starts]
+///   - Behavior: [excludeBegin], [excludeEnd], [skip], [returnBegin], [returnEnd]
+///   - Styling: [className], [relevance], [caseInsensitive], [lexemes]
+///   - Internal: Compiled state and regex caches
 class Mode {
   String? ref;
   Map<String, Mode>? refs;

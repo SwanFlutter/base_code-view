@@ -1,7 +1,6 @@
 import 'package:base_cod_view/languages/language/languages.dart';
-import 'package:collection/collection.dart' show IterableExtension;
-
 import 'package:base_cod_view/languages/plaintext.dart';
+import 'package:collection/collection.dart' show IterableExtension;
 
 import 'tools/mode.dart';
 import 'tools/node.dart';
@@ -10,6 +9,19 @@ import 'tools/utils.dart';
 
 export 'tools/node.dart';
 
+/// Main syntax highlighter class for code highlighting with customizable styles.
+///
+/// The [Highlight] class provides methods to register programming languages,
+/// parse source code with syntax highlighting, and generate HTML or styled output.
+/// It supports multiple languages and automatic language detection.
+///
+/// Example usage:
+/// ```dart
+/// final highlight = Highlight();
+/// highlight.registerLanguage(Languages.dart, dart);
+/// final result = highlight.highlight('void main() {}', language: Languages.dart);
+/// final html = result.nodes?.map((node) => node.toHtml()).join();
+/// ```
 class Highlight {
   final _languages = <Languages, Mode>{};
   final _aliases = <String, Languages>{};
@@ -253,6 +265,27 @@ class Highlight {
   /// [autoDetect]: The default value is `false`. Pass `true` to enable language auto detection.
   /// Notice that **this may cause performance issue** because it will try to parse source with
   /// all registered languages and use the most relevant one.
+  /// Parses source code with syntax highlighting.
+  ///
+  /// Applies syntax highlighting to the provided source code based on the specified language.
+  /// If no language is provided and [autoDetection] is true, attempts to automatically detect
+  /// the programming language.
+  ///
+  /// Parameters:
+  ///   - [source]: The source code to highlight
+  ///   - [language]: The programming language (required unless autoDetection is true)
+  ///   - [autoDetection]: If true, attempts automatic language detection
+  ///
+  /// Returns: A [Result] object containing highlighted nodes and language info
+  /// Throws: [ArgumentError] if language is null and autoDetection is false
+  ///
+  /// Example:
+  /// ```dart
+  /// var result = highlight.parse(
+  ///   source: 'void main() { }',
+  ///   language: Languages.dart,
+  /// );
+  /// ```
   Result parse(
       {required String source,
       required Languages? language,
@@ -495,6 +528,15 @@ class Highlight {
         _languages[_aliases[language.toString()] ?? language];
   }
 
+  /// Registers a single programming language with its highlighting rules.
+  ///
+  /// The [name] parameter identifies the language (e.g., [Languages.dart])
+  /// and [languageMode] contains the syntax rules for highlighting.
+  /// Aliases from the language mode are automatically registered for lookups.
+  ///
+  /// Parameters:
+  ///   - [name]: The language identifier
+  ///   - [languageMode]: The syntax highlighting mode/rules for the language
   void registerLanguage(Languages name, Mode languageMode) {
     _languages[name] = languageMode;
     if (languageMode.aliases != null) {
@@ -504,6 +546,13 @@ class Highlight {
     }
   }
 
+  /// Registers multiple programming languages at once.
+  ///
+  /// This is a convenience method for registering several languages
+  /// in a single call.
+  ///
+  /// Parameters:
+  ///   - [languages]: A map of language identifiers to their highlighting modes
   void registerLanguages(Map<Languages, Mode> languages) {
     languages.forEach(registerLanguage);
   }

@@ -1,6 +1,35 @@
+/// A Flutter package for displaying and highlighting code with customizable styles and features.
+///
+/// This package provides a [Highlight] class for syntax highlighting of code in multiple
+/// programming languages. It generates styled HTML output or Flutter TextSpans for displaying
+/// highlighted code with proper syntax coloring and styling.
+///
+/// Main features:
+/// - Support for 300+ programming languages
+/// - Syntax highlighting with customizable styles
+/// - HTML and Flutter TextSpan output formats
+/// - Automatic language detection
+/// - Text selection styling
+///
+/// Usage example:
+/// ```dart
+/// import 'package:base_cod_view/base_code_view.dart';
+///
+/// void main() {
+///   final highlight = Highlight();
+///   highlight.registerLanguage(Languages.dart, dart);
+///
+///   final result = highlight.parse(
+///     source: 'void main() { print("Hello"); }',
+///     language: Languages.dart,
+///   );
+///
+///   // Use with SelectableText
+///   SelectableText.rich(result.nodes![0].toTextSpan());
+/// }
+/// ```
 library;
 
-export 'package:base_cod_view/languages/1c.dart';
 export 'package:base_cod_view/languages/abnf.dart';
 export 'package:base_cod_view/languages/accesslog.dart';
 export 'package:base_cod_view/languages/actionscript.dart';
@@ -27,8 +56,8 @@ export 'package:base_cod_view/languages/cal.dart';
 export 'package:base_cod_view/languages/capnproto.dart';
 export 'package:base_cod_view/languages/ceylon.dart';
 export 'package:base_cod_view/languages/clean.dart';
-export 'package:base_cod_view/languages/clojure-repl.dart';
 export 'package:base_cod_view/languages/clojure.dart';
+export 'package:base_cod_view/languages/clojure_repl.dart';
 export 'package:base_cod_view/languages/cmake.dart';
 export 'package:base_cod_view/languages/coffeescript.dart';
 export 'package:base_cod_view/languages/coq.dart';
@@ -54,8 +83,8 @@ export 'package:base_cod_view/languages/ebnf.dart';
 export 'package:base_cod_view/languages/elixir.dart';
 export 'package:base_cod_view/languages/elm.dart';
 export 'package:base_cod_view/languages/erb.dart';
-export 'package:base_cod_view/languages/erlang-repl.dart';
 export 'package:base_cod_view/languages/erlang.dart';
+export 'package:base_cod_view/languages/erlang_repl.dart';
 export 'package:base_cod_view/languages/excel.dart';
 export 'package:base_cod_view/languages/fix.dart';
 export 'package:base_cod_view/languages/flix.dart';
@@ -87,11 +116,12 @@ export 'package:base_cod_view/languages/irpf90.dart';
 export 'package:base_cod_view/languages/isbl.dart';
 export 'package:base_cod_view/languages/java.dart';
 export 'package:base_cod_view/languages/javascript.dart';
-export 'package:base_cod_view/languages/jboss-cli.dart';
+export 'package:base_cod_view/languages/jboss_cli.dart';
 export 'package:base_cod_view/languages/json.dart';
 export 'package:base_cod_view/languages/julia.dart';
 export 'package:base_cod_view/languages/julia_repl.dart';
 export 'package:base_cod_view/languages/kotlin.dart';
+export 'package:base_cod_view/languages/lang_1c.dart';
 export 'package:base_cod_view/languages/language/languages.dart';
 export 'package:base_cod_view/languages/lasso.dart';
 export 'package:base_cod_view/languages/ldif.dart';
