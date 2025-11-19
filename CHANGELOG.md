@@ -1,4 +1,9 @@
 
+## 0.0.6
+
+* Fix pub point
+
+
 ## 0.0.5
 
 * Fix pub point
