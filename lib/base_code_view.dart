@@ -30,9 +30,6 @@
 /// ```
 library;
 
-// Language definitions and exports (documented in languages_doc.dart)
-export 'package:base_cod_view/languages_doc.dart';
-
 export 'package:base_cod_view/languages/abnf.dart';
 export 'package:base_cod_view/languages/accesslog.dart';
 export 'package:base_cod_view/languages/actionscript.dart';
@@ -221,5 +218,7 @@ export 'package:base_cod_view/languages/xl.dart';
 export 'package:base_cod_view/languages/xml.dart';
 export 'package:base_cod_view/languages/xquery.dart';
 export 'package:base_cod_view/languages/zephir.dart';
+// Language definitions and exports (documented in languages_doc.dart)
+export 'package:base_cod_view/languages_doc.dart';
 
 export 'src/base_code_view.dart';

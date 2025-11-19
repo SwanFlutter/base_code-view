@@ -25,7 +25,8 @@ export 'package:base_cod_view/languages/ada.dart' show ada;
 
 /// Aggregated export of all supported language definitions.
 /// Contains mappings for all programming languages supported by this package.
-export 'package:base_cod_view/languages/all.dart' show allLanguages, builtinLanguages, communityLanguages;
+export 'package:base_cod_view/languages/all.dart'
+    show allLanguages, builtinLanguages, communityLanguages;
 
 /// Syntax highlighting mode for AngelScript.
 /// A scripting language commonly used in game development.
@@ -111,13 +112,13 @@ export 'package:base_cod_view/languages/ceylon.dart' show ceylon;
 /// Functional programming language.
 export 'package:base_cod_view/languages/clean.dart' show clean;
 
-/// Syntax highlighting mode for Clojure REPL (Read-Eval-Print Loop).
-/// Interactive Clojure shell syntax.
-export 'package:base_cod_view/languages/clojure_repl.dart' show clojureRepl;
-
 /// Syntax highlighting mode for Clojure programming language.
 /// Lisp-like language running on the JVM.
 export 'package:base_cod_view/languages/clojure.dart' show clojure;
+
+/// Syntax highlighting mode for Clojure REPL (Read-Eval-Print Loop).
+/// Interactive Clojure shell syntax.
+export 'package:base_cod_view/languages/clojure_repl.dart' show clojureRepl;
 
 /// Syntax highlighting mode for CMake build system.
 /// Cross-platform build file configuration.
@@ -219,13 +220,13 @@ export 'package:base_cod_view/languages/elm.dart' show elm;
 /// Ruby embedded in HTML and other text.
 export 'package:base_cod_view/languages/erb.dart' show erb;
 
-/// Syntax highlighting mode for Erlang REPL (Read-Eval-Print Loop).
-/// Interactive Erlang shell syntax.
-export 'package:base_cod_view/languages/erlang_repl.dart' show erlangRepl;
-
 /// Syntax highlighting mode for Erlang programming language.
 /// Concurrent functional language.
 export 'package:base_cod_view/languages/erlang.dart' show erlang;
+
+/// Syntax highlighting mode for Erlang REPL (Read-Eval-Print Loop).
+/// Interactive Erlang shell syntax.
+export 'package:base_cod_view/languages/erlang_repl.dart' show erlangRepl;
 
 /// Syntax highlighting mode for Microsoft Excel formulas.
 /// Spreadsheet formula syntax.
@@ -359,13 +360,13 @@ export 'package:base_cod_view/languages/jboss_cli.dart' show jbossCli;
 /// Lightweight data interchange format.
 export 'package:base_cod_view/languages/json.dart' show json;
 
-/// Syntax highlighting mode for Julia REPL (Read-Eval-Print Loop).
-/// Interactive Julia shell syntax.
-export 'package:base_cod_view/languages/julia_repl.dart' show juliaRepl;
-
 /// Syntax highlighting mode for Julia programming language.
 /// High-performance language for scientific computing.
 export 'package:base_cod_view/languages/julia.dart' show julia;
+
+/// Syntax highlighting mode for Julia REPL (Read-Eval-Print Loop).
+/// Interactive Julia shell syntax.
+export 'package:base_cod_view/languages/julia_repl.dart' show juliaRepl;
 
 /// Syntax highlighting mode for Kotlin programming language.
 /// JVM language with Java interoperability.
@@ -401,7 +402,8 @@ export 'package:base_cod_view/languages/lisp.dart' show lisp;
 
 /// Syntax highlighting mode for LiveCodeServer scripting.
 /// RunRev LiveCode server-side scripting.
-export 'package:base_cod_view/languages/livecodeserver.dart' show livecodeserver;
+export 'package:base_cod_view/languages/livecodeserver.dart'
+    show livecodeserver;
 
 /// Syntax highlighting mode for LiveScript programming language.
 /// Language that compiles to JavaScript.
