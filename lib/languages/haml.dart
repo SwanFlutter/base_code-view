@@ -1,0 +1,87 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+import '../src/common_modes.dart';
+import '../src/tools/mode.dart';
+import 'language/languages.dart';
+
+/// Syntax highlighting mode for haml.
+final haml = Mode(
+  refs: {},
+  caseInsensitive: true,
+  contains: [
+    Mode(
+      className: "meta",
+      begin: "^!!!( (5|1\\.1|Strict|Frameset|Basic|Mobile|RDFa|XML\\b.*))?\$",
+      relevance: 10,
+    ),
+    Mode(
+      className: "comment",
+      begin: "^\\s*(!=#|=#|-#|/).*\$",
+      end: "false",
+      contains: [
+        phrasalWordsMode,
+        Mode(
+          className: "doctag",
+          begin: "(?:TODO|FIXME|NOTE|BUG|XXX):",
+          relevance: 0,
+        ),
+      ],
+      relevance: 0,
+    ),
+    Mode(
+      begin: "^\\s*(-|=|!=)(?!#)",
+      starts: Mode(end: "\\n", subLanguage: [Languages.ruby]),
+    ),
+    Mode(
+      className: "tag",
+      begin: "^\\s*%",
+      contains: [
+        Mode(className: "selector-tag", begin: "\\w+"),
+        Mode(className: "selector-id", begin: "#[\\w-]+"),
+        Mode(className: "selector-class", begin: "\\.[\\w-]+"),
+        Mode(
+          begin: "{\\s*",
+          end: "\\s*}",
+          contains: [
+            Mode(
+              begin: ":\\w+\\s*=>",
+              end: ",\\s+",
+              returnBegin: true,
+              endsWithParent: true,
+              contains: [
+                Mode(className: "attr", begin: ":\\w+"),
+                aposStringMode,
+                quoteStringMode,
+                Mode(begin: "\\w+", relevance: 0),
+              ],
+            ),
+          ],
+        ),
+        Mode(
+          begin: "\\(\\s*",
+          end: "\\s*\\)",
+          excludeEnd: true,
+          contains: [
+            Mode(
+              begin: "\\w+\\s*=",
+              end: "\\s+",
+              returnBegin: true,
+              endsWithParent: true,
+              contains: [
+                Mode(className: "attr", begin: "\\w+", relevance: 0),
+                aposStringMode,
+                quoteStringMode,
+                Mode(begin: "\\w+", relevance: 0),
+              ],
+            ),
+          ],
+        ),
+      ],
+    ),
+    Mode(begin: "^\\s*[=\\x7e]\\s*"),
+    Mode(
+      begin: "#{",
+      starts: Mode(end: "}", subLanguage: [Languages.ruby]),
+    ),
+  ],
+);
