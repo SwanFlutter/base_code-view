@@ -113,7 +113,6 @@ class Mode {
       ..skip = b.skip ?? a.skip
       ..returnBegin = b.returnBegin ?? a.returnBegin
       ..returnEnd = b.returnEnd ?? a.returnEnd
-
       //
       ..compiled = b.compiled ?? a.compiled
       ..parent = b.parent ?? a.parent

@@ -5,11 +5,14 @@ import 'language/languages.dart';
 import '../src/tools/mode.dart';
 
 /// Syntax highlighting mode for shell.
-final shell = Mode(refs: {}, aliases: [
-  "console"
-], contains: [
-  Mode(
+final shell = Mode(
+  refs: {},
+  aliases: ["console"],
+  contains: [
+    Mode(
       className: "meta",
       begin: "^\\s{0,3}[/\\w\\d\\[\\]()@-]*[>%\$#]",
-      starts: Mode(end: "\$", subLanguage: [Languages.bash]))
-]);
+      starts: Mode(end: "\$", subLanguage: [Languages.bash]),
+    ),
+  ],
+);

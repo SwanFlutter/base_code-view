@@ -5,15 +5,18 @@ import 'language/languages.dart';
 import '../src/tools/mode.dart';
 
 /// Syntax highlighting mode for mojolicious.
-final mojolicious = Mode(refs: {}, subLanguage: [
-  Languages.xml
-], contains: [
-  Mode(className: "meta", begin: "^__(END|DATA)__\$"),
-  Mode(begin: "^\\s*%{1,2}={0,2}", end: "\$", subLanguage: [Languages.perl]),
-  Mode(
+final mojolicious = Mode(
+  refs: {},
+  subLanguage: [Languages.xml],
+  contains: [
+    Mode(className: "meta", begin: "^__(END|DATA)__\$"),
+    Mode(begin: "^\\s*%{1,2}={0,2}", end: "\$", subLanguage: [Languages.perl]),
+    Mode(
       begin: "<%{1,2}={0,2}",
       end: "={0,1}%>",
       subLanguage: [Languages.perl],
       excludeBegin: true,
-      excludeEnd: true)
-]);
+      excludeEnd: true,
+    ),
+  ],
+);

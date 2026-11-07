@@ -195,6 +195,7 @@ final communityLanguages = {
   'gn': gn,
   'solidity': solidity,
 };
+
 /// Built-in language definitions shipped with the package.
 final builtinLanguages = {
   '1c': lang1C,
@@ -383,5 +384,6 @@ final builtinLanguages = {
   'yaml': yaml,
   'zephir': zephir,
 };
+
 /// Combined map of all supported languages.
 final allLanguages = {...builtinLanguages, ...communityLanguages};

@@ -3,8 +3,10 @@
 import '../src/tools/mode.dart';
 
 /// Syntax highlighting mode for leaf.
-final leaf = Mode(refs: {}, contains: [
-  Mode(
+final leaf = Mode(
+  refs: {},
+  contains: [
+    Mode(
       className: "function",
       begin: "#+[A-Za-z_0-9]*\\(",
       end: " {",
@@ -14,13 +16,16 @@ final leaf = Mode(refs: {}, contains: [
         Mode(className: "keyword", begin: "#+"),
         Mode(className: "title", begin: "[A-Za-z_][A-Za-z_0-9]*"),
         Mode(
-            className: "params",
-            begin: "\\(",
-            end: "\\)",
-            endsParent: true,
-            contains: [
-              Mode(className: "string", begin: "\"", end: "\""),
-              Mode(className: "variable", begin: "[A-Za-z_][A-Za-z_0-9]*")
-            ])
-      ])
-]);
+          className: "params",
+          begin: "\\(",
+          end: "\\)",
+          endsParent: true,
+          contains: [
+            Mode(className: "string", begin: "\"", end: "\""),
+            Mode(className: "variable", begin: "[A-Za-z_][A-Za-z_0-9]*"),
+          ],
+        ),
+      ],
+    ),
+  ],
+);

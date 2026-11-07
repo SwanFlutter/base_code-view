@@ -1,4 +1,9 @@
 
+## 0.0.7
+
+* Add dartdoc documentation to public API (20%+ documented)
+* Improve package pub points
+
 ## 0.0.6
 
 * Fix pub point

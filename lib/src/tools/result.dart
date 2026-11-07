@@ -80,7 +80,8 @@ class Result {
     var str = '';
 
     void traverse(Node node) {
-      final shouldAddSpan = node.className != null &&
+      final shouldAddSpan =
+          node.className != null &&
           ((node.value != null && node.value!.isNotEmpty) ||
               (node.children != null && node.children!.isNotEmpty));
 
@@ -141,7 +142,8 @@ ${toHtml()}
     TextStyle? baseStyle,
     Map<String, TextStyle>? customStyles,
   }) {
-    final defaultBaseStyle = baseStyle ??
+    final defaultBaseStyle =
+        baseStyle ??
         TextStyle(
           fontFamily: 'monospace',
           fontSize: 14,
@@ -152,8 +154,10 @@ ${toHtml()}
       'keyword': TextStyle(color: Color(0xFF569cd6)),
       'string': TextStyle(color: Color(0xFFce9178)),
       'number': TextStyle(color: Color(0xFFb5cea8)),
-      'comment':
-          TextStyle(color: Color(0xFF6a9955), fontStyle: FontStyle.italic),
+      'comment': TextStyle(
+        color: Color(0xFF6a9955),
+        fontStyle: FontStyle.italic,
+      ),
       'function': TextStyle(color: Color(0xFFdcdcaa)),
       'class': TextStyle(color: Color(0xFF4ec9b0)),
       'title': TextStyle(color: Color(0xFFdcdcaa)),
@@ -211,10 +215,7 @@ ${toHtml()}
           : baseForNode;
 
       if (node.value != null) {
-        spans.add(TextSpan(
-          text: node.value,
-          style: effectiveStyle,
-        ));
+        spans.add(TextSpan(text: node.value, style: effectiveStyle));
       } else if (node.children != null) {
         for (var child in node.children!) {
           spans.addAll(traverse(child, effectiveStyle));
@@ -229,8 +230,6 @@ ${toHtml()}
       allSpans.addAll(traverse(node, defaultBaseStyle));
     }
 
-    return TextSpan(
-      children: allSpans,
-    );
+    return TextSpan(children: allSpans);
   }
 }

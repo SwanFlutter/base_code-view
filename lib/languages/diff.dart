@@ -3,23 +3,32 @@
 import '../src/tools/mode.dart';
 
 /// Syntax highlighting mode for diff.
-final diff = Mode(refs: {}, aliases: [
-  "patch"
-], contains: [
-  Mode(className: "meta", relevance: 10, variants: [
-    Mode(begin: "^@@ +\\-\\d+,\\d+ +\\+\\d+,\\d+ +@@\$"),
-    Mode(begin: "^\\*\\*\\* +\\d+,\\d+ +\\*\\*\\*\\*\$"),
-    Mode(begin: "^\\-\\-\\- +\\d+,\\d+ +\\-\\-\\-\\-\$")
-  ]),
-  Mode(className: "comment", variants: [
-    Mode(begin: "Index: ", end: "\$"),
-    Mode(begin: "={3,}", end: "\$"),
-    Mode(begin: "^\\-{3}", end: "\$"),
-    Mode(begin: "^\\*{3} ", end: "\$"),
-    Mode(begin: "^\\+{3}", end: "\$"),
-    Mode(begin: "^\\*{15}\$")
-  ]),
-  Mode(className: "addition", begin: "^\\+", end: "\$"),
-  Mode(className: "deletion", begin: "^\\-", end: "\$"),
-  Mode(className: "addition", begin: "^\\!", end: "\$")
-]);
+final diff = Mode(
+  refs: {},
+  aliases: ["patch"],
+  contains: [
+    Mode(
+      className: "meta",
+      relevance: 10,
+      variants: [
+        Mode(begin: "^@@ +\\-\\d+,\\d+ +\\+\\d+,\\d+ +@@\$"),
+        Mode(begin: "^\\*\\*\\* +\\d+,\\d+ +\\*\\*\\*\\*\$"),
+        Mode(begin: "^\\-\\-\\- +\\d+,\\d+ +\\-\\-\\-\\-\$"),
+      ],
+    ),
+    Mode(
+      className: "comment",
+      variants: [
+        Mode(begin: "Index: ", end: "\$"),
+        Mode(begin: "={3,}", end: "\$"),
+        Mode(begin: "^\\-{3}", end: "\$"),
+        Mode(begin: "^\\*{3} ", end: "\$"),
+        Mode(begin: "^\\+{3}", end: "\$"),
+        Mode(begin: "^\\*{15}\$"),
+      ],
+    ),
+    Mode(className: "addition", begin: "^\\+", end: "\$"),
+    Mode(className: "deletion", begin: "^\\-", end: "\$"),
+    Mode(className: "addition", begin: "^\\!", end: "\$"),
+  ],
+);
